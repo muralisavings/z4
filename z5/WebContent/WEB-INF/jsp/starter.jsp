@@ -12,7 +12,7 @@
   <title>Instant TopUp</title>
 
   <!-- css --->
-  <script type="text/javascript" src = "${pageContext.servletContext.contextPath}/resources/js/lib/jquery-3.1.0.js"></script>
+  <script type="text/javascript" src = "${pageContext.servletContext.contextPath}/resources/js/jquery-3.1.0.js"></script>
   <spring:url value="/resources/js/lib/jquery-3.1.0.js" var="jqueryJs" />
   <spring:url value="/resources/css/base.css" var="basecss" />
   <spring:url value="/resources/css/style.css" var="stylecss" />
@@ -202,7 +202,7 @@ $("#mobilenumber").focusout(function(){
 	    	  dataType: 'text', 
 
 	    	  success: function(data){
-					//alert(data);
+					alert(data);
 					$("#serviceProvider").val(data);
 				  },
 					  error: function(e){
