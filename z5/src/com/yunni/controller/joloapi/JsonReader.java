@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.google.gson.Gson;
+import com.yunni.controller.joloapi.vo.OperatorCircleResponseVO;
 
 public class JsonReader {
 
@@ -36,20 +37,6 @@ public class JsonReader {
       is.close();
     }
   }
-
-  public static void main(String[] args) throws Exception {
-//    JSONObject json = readJsonFromUrl("https://joloapi.com/api/findoperator.php?userid=shivanyam&key=1234555&mob=8438100844&type=json");
-//    System.out.println(json);
-//    //System.out.println(json.get("id"));
-	  
-//	  String json = readUrl("https://joloapi.com/api/findoperator.php?userid=shivanyam&key=1234555&mob=8438100844&type=json");
-//
-//	  	Gson gson = new Gson();        
-//	  	//Page page = gson.fromJson(json, Page.class);
-//
-//System.out.println(gson);
-	  main1(null);
-  }
   
   private static String readUrl(String urlString) throws Exception {
 	    BufferedReader reader = null;
@@ -69,20 +56,10 @@ public class JsonReader {
 	    }
 	}
   
-  public static void main1(String[] args) throws Exception {
-
-      URL url = new URL("https://joloapi.com/api/findoperator.php?userid=shivanyam&key=180714086798992&mob=8438100844&type=json");
+  public OperatorCircleResponseVO getOperatorAndCircleByMobileNumber(String mobileNo) throws Exception {
+      URL url = new URL("http://joloapi.com/api/findoperator.php?userid=shivanyam&key=180714086798992&mob="+mobileNo+"&type=json");
       InputStreamReader reader = new InputStreamReader(url.openStream());
-      MyDto dto = new Gson().fromJson(reader, MyDto.class);
-
-      // using the deserialized object
-      System.out.println(dto.status);
-      System.out.println(dto.error);
-      
-  }
-
-  private class MyDto {
-     String status;
-     String error;
+      OperatorCircleResponseVO operatorCircleResponseVO = new Gson().fromJson(reader, OperatorCircleResponseVO.class);
+      return operatorCircleResponseVO;       
   }
 }

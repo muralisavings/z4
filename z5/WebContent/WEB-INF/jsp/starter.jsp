@@ -197,11 +197,10 @@ function loadOperatorAndPlans() {
 }
 $("#mobilenumber").focusout(function(){
 			$.ajax({
-			 url: 'ajaxservice/geMobileInfo',
-	    	  type:'get',
-	    	  dataType: 'text', 
-
-	    	  success: function(data){
+			 url: 'ajaxservice/geMobileInfo?mobileNumber='+$("#mobilenumber").val(),
+	    	 type:'get',
+	    	 dataType: 'text', 
+	    	 success: function(data){
 					alert(data);
 					$("#serviceProvider").val(data);
 				  },
