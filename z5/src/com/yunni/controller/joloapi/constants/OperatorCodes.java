@@ -22,9 +22,9 @@ public class OperatorCodes {
 		operatorMap.put("20", "MTNL DELHI");
 		operatorMap.put("0", "NONE");
 		operatorMap.put("8", "IDEA");
-		operatorMap.put("17", "VIRGIN GSM");
-		operatorMap.put("18", "VIRGIN CDMA");
-		operatorMap.put("17", "T24");
+		//operatorMap.put("17", "VIRGIN GSM");
+		//operatorMap.put("18", "VIRGIN CDMA");
+		//operatorMap.put("17", "T24");
 	}
 	public static String getOperatorNameByCode(String operator_code){
 		return operatorMap.get(operator_code);

@@ -17,12 +17,15 @@
   <spring:url value="/resources/css/base.css" var="basecss" />
   <spring:url value="/resources/css/style.css" var="stylecss" />
   <spring:url value="/resources/css/tabbed-panels.css" var="tabcss" />
+  <spring:url value="/resources/css/jquery.dataTables.min.css" var="tablecss" />
+  
   <spring:url value="/resources/icons/mobile_r.jpg" var="mobile_r" />
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
   <link href="${basecss}" rel="stylesheet">
   <link href="${stylecss}" rel="stylesheet">
   <link href="${tabcss}" rel="stylesheet">
+  <link href="${tablecss}" rel="stylesheet">
   <link href="${mobile_r}" rel="stylesheet">
   
  
@@ -83,7 +86,7 @@
             <input type="text" placeholder="Service Circle" id = "serviceCircle">
           </li>
           <li>
-            <input type="text" placeholder="Amount">
+            <input type="text" placeholder="Amount" id = "amount">
           </li>
         </ol>
    	</div>
@@ -95,7 +98,22 @@
           <label for="tabbed1">Top Up</label>
         </h1>
         <div>
-          All human beings are born free and equal in dignity and rights. They are endowed with reason and conscience and should act towards one another in a spirit of brotherhood.
+        <table id="offerTable" class="display" cellspacing="0" width="100%">
+        	<thead>
+           	 <tr>
+                <th>Detail</th>
+                <th>Amount</th>
+                <th>Validity</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Detail</th>
+                <th>Amount</th>
+                <th>Validity</th>
+            </tr>
+        </tfoot>
+    </table>
         </div>
       </section>
       <input name="tabbed" id="tabbed2" type="radio">
@@ -199,19 +217,27 @@ $("#mobilenumber").focusout(function(){
 			$.ajax({
 			 url: 'ajaxservice/geMobileInfo?mobileNumber='+$("#mobilenumber").val(),
 	    	 type:'get',
-	    	 dataType: 'text', 
+	    	 dataType: 'json', 
 	    	 success: function(data){
-					//alert(data);
-					$("#serviceProvider").val(data.operator_code);
-					$("#serviceCircle").val(data.circle_code);
+					$("#serviceProvider").val(data.operator_name);
+					$("#serviceCircle").val(data.circle_name);
 					$.ajax({
 						 url: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
 				    	 type:'get',
 				    	 dataType: 'text', 
 				    	 success: function(data){
-								alert(data);
-								//$("#serviceProvider").val(data.operator_name);
-								//$("#serviceCircle").val(data.circle_name);
+				    		   $('#offerTable').empty()
+								var response = $.parseJSON(data);
+
+								$(function() {
+								    $.each(response, function(i, item) {
+								        var $tr = $('<tr>').append(
+								            $('<td>').text(item.Detail),
+								            $('<td>').text(item.Amount),
+								            $('<td>').text(item.Validity)
+								        ).appendTo('#offerTable');
+								    });
+								});
 							  },
 								  error: function(e){
 									  alert("Error11");

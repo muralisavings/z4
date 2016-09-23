@@ -28,15 +28,34 @@ public class JsonReader {
 
   public static String readJsonFromUrl(String url) throws IOException, JSONException {
     InputStream is = new URL(url).openStream();
+    String jsonText="";
     try {
       BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
-      String jsonText = readAll(rd);
+      jsonText = readAll(rd);
       JSONObject json = new JSONObject(jsonText);
       return json.toString();
-    } finally {
+    } catch(Exception e){
+    	return "Updated(->"+jsonText+")"+e.getMessage();
+    }
+    finally {
       is.close();
     }
   }
+  
+  public static String readJsonArrayFromUrl(String url) throws IOException, JSONException {
+	    InputStream is = new URL(url).openStream();
+	    String jsonText="";
+	    try {
+	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+	      jsonText = readAll(rd);
+	      return jsonText;
+	    } catch(Exception e){
+	    	return e.getMessage();
+	    }
+	    finally {
+	      is.close();
+	    }
+	  }
   
   private static String readUrl(String urlString) throws Exception {
 	    BufferedReader reader = null;

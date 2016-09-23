@@ -1,6 +1,5 @@
 package com.yunni.controller.joloapi;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,10 +7,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import com.google.gson.Gson;
 import com.yunni.controller.joloapi.constants.CircleCodes;
 import com.yunni.controller.joloapi.constants.OperatorCodes;
@@ -22,11 +17,9 @@ public class JoloApiInvoker {
 
 	public String getOperatorAndCircleByMobileNumberDuP(String mobileNo) throws Exception {
 	      URL url = new URL("http://joloapi.com/api/findoperator.php?userid=shivanyam&key=180714086798992&mob="+mobileNo+"&type=json");
-	      //InputStreamReader reader = new InputStreamReader(url.openStream());
 	      InputStream is = url.openStream();
 	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 	      String jsonText = readAll(rd);
-	     //OperatorCircleResponseVO operatorCircleResponseVO = new Gson().fromJson(reader, OperatorCircleResponseVO.class);
 	      return jsonText;       
 	  }
 	
@@ -40,17 +33,13 @@ public class JoloApiInvoker {
 	  
 	  public String getOperatorAndCircleByMobileNumber1(String mobileNo) throws Exception {
 	      String result = JsonReader.readJsonFromUrl("http://joloapi.com/api/findoperator.php?userid=shivanyam&key=180714086798992&mob="+mobileNo+"&type=json");
-	      return  result;       
+	      return  result+" for http://joloapi.com/api/findoperator.php?userid=shivanyam&key=180714086798992&mob="+mobileNo+"&type=json";       
 	  }
 	  
-	  public String getOfferInfoByMobileNumber(String operatorName, String circleName ) throws Exception {
+	  public String getOfferInfo(String operatorName, String circleName ) throws Exception {
 		  String operatorCode = MapUtil.getKey(OperatorCodes.operatorMap, operatorName);
 		  String circleCode = MapUtil.getKey(CircleCodes.circleMap, circleName);
-	     // URL url = new URL("https://joloapi.com/api/findplan.php?userid=shivanyam&key=180714086798992&opt="+operatorCode+"cir="+circleCode+"&type=json");
-		  String result = JsonReader.readJsonFromUrl("https://joloapi.com/api/findplan.php?userid=shivanyam&key=180714086798992&opt="+operatorCode+"cir="+circleCode+"&type=json");
-//	      InputStreamReader reader = new InputStreamReader(url.openStream());
-//	      OperatorCircleResponseVO operatorCircleResponseVO = new Gson().fromJson(reader, OperatorCircleResponseVO.class);
-//	      return  parseAndGetOperatorAndCircleNames(operatorCircleResponseVO);       
+		  String result = JsonReader.readJsonArrayFromUrl("http://joloapi.com/api/findplan.php?userid=shivanyam&key=180714086798992&opt="+operatorCode+"&cir="+circleCode+"&type=json");
 		  return result;
 	  }
 	
@@ -64,8 +53,8 @@ public class JoloApiInvoker {
 	  }
 	 
 	 private OperatorCircleResponseVO parseAndGetOperatorAndCircleNames(OperatorCircleResponseVO operatorCircleResponseVO){
-		 operatorCircleResponseVO.setCircle_name(CircleCodes.getCircleNameByCode(operatorCircleResponseVO.getCircle_name()));
-		 operatorCircleResponseVO.setOperator_name(OperatorCodes.getOperatorNameByCode(operatorCircleResponseVO.getOperator_name()));
+		 operatorCircleResponseVO.setCircle_name(CircleCodes.getCircleNameByCode(operatorCircleResponseVO.getCircle_code()));
+		 operatorCircleResponseVO.setOperator_name(OperatorCodes.getOperatorNameByCode(operatorCircleResponseVO.getOperator_code()));
 		 return operatorCircleResponseVO;
 	 }
 	 
