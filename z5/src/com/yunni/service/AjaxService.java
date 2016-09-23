@@ -20,10 +20,27 @@ public class AjaxService {
 		 try {
 		 String mobileNumber = request.getParameter("mobileNumber");
 		 JoloApiInvoker joloApiInvoker = new JoloApiInvoker();
-		 OperatorCircleResponseVO operatorCircleResponseVO;
-		return joloApiInvoker.getOperatorAndCircleByMobileNumber(mobileNumber);
-			//operatorCircleResponseVO = joloApiInvoker.getOperatorAndCircleByMobileNumber(mobileNumber);
-			//return gson.toJson(operatorCircleResponseVO);
+//		 OperatorCircleResponseVO operatorCircleResponseVO = joloApiInvoker.getOperatorAndCircleByMobileNumber(mobileNumber);
+//	 	 return gson.toJson(operatorCircleResponseVO);
+		 return joloApiInvoker.getOperatorAndCircleByMobileNumber1(mobileNumber);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	 
+	 @RequestMapping(value = "/getOfferInfo",  method=RequestMethod.GET)
+		protected @ResponseBody String getOfferInfoByMobileNumber(HttpServletRequest request){
+		 try {
+		// String mobileNumber = request.getParameter("mobileNumber");
+		 String operatorName = request.getParameter("operatorName");
+		 String circleName = request.getParameter("circleName");
+		 JoloApiInvoker joloApiInvoker = new JoloApiInvoker();
+		// OperatorCircleResponseVO operatorCircleResponseVO = joloApiInvoker.getOperatorAndCircleByMobileNumber(mobileNumber);
+		 String result = joloApiInvoker.getOfferInfoByMobileNumber(operatorName, circleName);
+//	 	 return gson.toJson(operatorCircleResponseVO);
+				 return result;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

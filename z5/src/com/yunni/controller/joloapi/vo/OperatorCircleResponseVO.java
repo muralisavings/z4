@@ -2,23 +2,11 @@ package com.yunni.controller.joloapi.vo;
 
 public class OperatorCircleResponseVO {
 	
-	private Integer operatorCode;
-	private Integer circleCode;
+	private String operator_name;
+	private String circle_name;
 	private Integer error;
 	private String status;
 	
-	public Integer getOperatorCode() {
-		return operatorCode;
-	}
-	public void setOperatorCode(Integer operatorCode) {
-		this.operatorCode = operatorCode;
-	}
-	public Integer getCircleCode() {
-		return circleCode;
-	}
-	public void setCircleCode(Integer circleCode) {
-		this.circleCode = circleCode;
-	}
 	public Integer getError() {
 		return error;
 	}
@@ -31,4 +19,17 @@ public class OperatorCircleResponseVO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public String getOperator_name() {
+		return operator_name;
+	}
+	public void setOperator_name(String operator_name) {
+		this.operator_name = operator_name;
+	}
+	public String getCircle_name() {
+		return circle_name;
+	}
+	public void setCircle_name(String circle_name) {
+		this.circle_name = circle_name;
+	}
+	
 }

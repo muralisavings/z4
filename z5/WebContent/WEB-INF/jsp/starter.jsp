@@ -201,13 +201,29 @@ $("#mobilenumber").focusout(function(){
 	    	 type:'get',
 	    	 dataType: 'text', 
 	    	 success: function(data){
-					alert(data);
-					$("#serviceProvider").val(data);
+					//alert(data);
+					$("#serviceProvider").val(data.operator_code);
+					$("#serviceCircle").val(data.circle_code);
+					$.ajax({
+						 url: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
+				    	 type:'get',
+				    	 dataType: 'text', 
+				    	 success: function(data){
+								alert(data);
+								//$("#serviceProvider").val(data.operator_name);
+								//$("#serviceCircle").val(data.circle_name);
+							  },
+								  error: function(e){
+									  alert("Error11");
+								  }
+						});
 				  },
 					  error: function(e){
 						  alert("Error11");
 					  }
 			});
+			
+			
 /*	var data = {}
 	data["query"] = $("#mobilenumber").val();
 
