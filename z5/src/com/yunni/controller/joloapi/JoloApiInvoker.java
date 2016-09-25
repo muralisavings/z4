@@ -39,7 +39,7 @@ public class JoloApiInvoker {
 	  public String getOfferInfo(String operatorName, String circleName ) throws Exception {
 		  String operatorCode = MapUtil.getKey(OperatorCodes.operatorMap, operatorName);
 		  String circleCode = MapUtil.getKey(CircleCodes.circleMap, circleName);
-		  String result = JsonReader.readJsonArrayFromUrl("http://joloapi.com/api/findplan.php?userid=shivanyam&key=180714086798992&opt="+operatorCode+"&cir="+circleCode+"&type=json");
+		  String result = JsonReader.readJsonArrayFromUrl("http://joloapi.com/api/findplan.php?userid=shivanyam&key=180714086798992&opt="+operatorCode+"&cir="+circleCode+"&typ=TUP&type=json");
 		  return result;
 	  }
 	

@@ -13,11 +13,15 @@
 
   <!-- css --->
   <script type="text/javascript" src = "${pageContext.servletContext.contextPath}/resources/js/jquery-3.1.0.js"></script>
+  <script type="text/javascript" src = "${pageContext.servletContext.contextPath}/resources/js/jquery.dynatable.js"></script>
+  
   <spring:url value="/resources/js/lib/jquery-3.1.0.js" var="jqueryJs" />
   <spring:url value="/resources/css/base.css" var="basecss" />
   <spring:url value="/resources/css/style.css" var="stylecss" />
   <spring:url value="/resources/css/tabbed-panels.css" var="tabcss" />
   <spring:url value="/resources/css/jquery.dataTables.min.css" var="tablecss" />
+  <spring:url value="/resources/css/jquery.dynatable.css" var = "dynatablecss"/>
+
   
   <spring:url value="/resources/icons/mobile_r.jpg" var="mobile_r" />
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
@@ -27,6 +31,7 @@
   <link href="${tabcss}" rel="stylesheet">
   <link href="${tablecss}" rel="stylesheet">
   <link href="${mobile_r}" rel="stylesheet">
+    <link href="${dynatablecss}" rel="stylesheet">
   
  
   <!-- js -->
@@ -201,18 +206,7 @@
 </div><!-- /#wrapper -->
 
 <script type="text/javascript">
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-34160351-1']);
-_gaq.push(['_trackPageview']);
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
 
-function loadOperatorAndPlans() {
-    document.getElementById("myInput").style.backgroundColor = "yellow"; 
-}
 $("#mobilenumber").focusout(function(){
 			$.ajax({
 			 url: 'ajaxservice/geMobileInfo?mobileNumber='+$("#mobilenumber").val(),
@@ -221,7 +215,27 @@ $("#mobilenumber").focusout(function(){
 	    	 success: function(data){
 					$("#serviceProvider").val(data.operator_name);
 					$("#serviceCircle").val(data.circle_name);
+					
 					$.ajax({
+						  url: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
+				    	  type:'get',
+				    	  dataType: 'json', 
+					      success: function(data){
+					                  var dynatable = $('#offerTable').dynatable({
+							   						dataset: {
+								        				    records: data
+								      						}
+							 	  	 }).data('dynatable');
+								    dynatable.settings.dataset.originalRecords = data;
+								    dynatable.process();
+								    
+								    $("#pclresult").show();
+								    $("#my-ajax-table").show();
+								    
+								  }
+					});
+						
+					/*$.ajax({
 						 url: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
 				    	 type:'get',
 				    	 dataType: 'text', 
@@ -242,36 +256,13 @@ $("#mobilenumber").focusout(function(){
 								  error: function(e){
 									  alert("Error11");
 								  }
-						});
+						});*/
 				  },
 					  error: function(e){
 						  alert("Error11");
 					  }
 			});
-			
-			
-/*	var data = {}
-	data["query"] = $("#mobilenumber").val();
 
-	$.ajax({
-		type : "POST",
-		contentType : "application/json",
-		url : "${home}search/api/getSearchResult",
-		data : JSON.stringify(data),
-		dataType : 'json',
-		timeout : 100000,
-		success : function(data) {
-			console.log("SUCCESS: ", data);
-			display(data);
-		},
-		error : function(e) {
-			console.log("ERROR: ", e);
-			display(e);
-		},
-		done : function(e) {
-			console.log("DONE");
-		}
-	});*/
 	
     
 });
