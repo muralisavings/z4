@@ -105,19 +105,14 @@
         <div>
         <table id="offerTable" class="display" cellspacing="0" width="100%">
         	<thead>
-           	 <tr>
-                <th>Detail</th>
-                <th>Amount</th>
-                <th>Validity</th>
+        	<tr>
+                <th>detail</th>
+                <th>amount</th>
+                <th>validity</th>
             </tr>
         </thead>
-        <tfoot>
-            <tr>
-                <th>Detail</th>
-                <th>Amount</th>
-                <th>Validity</th>
-            </tr>
-        </tfoot>
+        <tbody>
+  		</tbody>
     </table>
         </div>
       </section>
@@ -215,13 +210,19 @@ $("#mobilenumber").focusout(function(){
 	    	 success: function(data){
 					$("#serviceProvider").val(data.operator_name);
 					$("#serviceCircle").val(data.circle_name);
-					
+					$.dynatableSetup({
+					    table: {
+					        defaultColumnIdStyle: 'noStyle'
+					    }
+					});
+
+			
 					$.ajax({
 						  url: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
 				    	  type:'get',
 				    	  dataType: 'json', 
 					      success: function(data){
-					                  var dynatable = $('#offerTable').dynatable({
+					    	           var dynatable = $('#offerTable').dynatable({
 							   						dataset: {
 								        				    records: data
 								      						}
@@ -229,11 +230,17 @@ $("#mobilenumber").focusout(function(){
 								    dynatable.settings.dataset.originalRecords = data;
 								    dynatable.process();
 								    
-								    $("#pclresult").show();
-								    $("#my-ajax-table").show();
-								    
 								  }
 					});
+					
+					/*$('#offerTable').dynatable({
+						  dataset: {
+						    ajax: true,
+						    ajaxUrl: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
+						    ajaxOnLoad: true,
+						    records: []
+						  }
+						});
 						
 					/*$.ajax({
 						 url: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
