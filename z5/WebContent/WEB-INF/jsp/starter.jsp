@@ -104,7 +104,7 @@
           <label for="tabbed1">Top Up</label>
         </h1>
         <div>
-        <table id="offerTable" cellspacing="0" width="100%">
+        <table id="offerTable" class="display" cellspacing="0" width="100%">
         	<thead>
         	<tr>
                 <th>Detail</th>
@@ -212,14 +212,28 @@ $("#mobilenumber").focusout(function(){
 					$("#serviceProvider").val(data.operator_name);
 					$("#serviceCircle").val(data.circle_name);
 					
-					var table = $('##offerTable').DataTable( {
+				    $('#offerTable').DataTable( {
+				        "processing": true,
+				        "serverSide": true,
+				        "ajax": {
+				            "url": "ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
+				            "type": "GET"
+				        },
+				        "columns": [
+				            { "records": "Detail" },
+				            { "records": "Amount" },
+				            { "records": "Validity" }
+				        ]
+				    } );
+					
+					/*var table = $('##offerTable').DataTable( {
 						sAjaxSource: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val()
 					} );
 					 
 					table.on( 'xhr', function () {
 					    var json = table.ajax.json();
 					    alert( json.data.length +' row(s) were loaded' );
-					} );
+					} );*/
 					/*$.ajax({
 						  url: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
 				    	  type:'get',

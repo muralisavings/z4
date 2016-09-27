@@ -34,7 +34,7 @@ public class AjaxService {
 		 String circleName = request.getParameter("circleName");
 		 JoloApiInvoker joloApiInvoker = new JoloApiInvoker();
 		 String result = joloApiInvoker.getOfferInfo(operatorName, circleName);
-		 //result =  "{ \"records\":"+result+"}";
+		 result =  "{ \"records\":"+result+"}";
 		 return result;
 		} catch (Exception e) {
 			return e.getMessage();
