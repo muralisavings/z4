@@ -14,6 +14,7 @@
   <!-- css --->
   <script type="text/javascript" src = "${pageContext.servletContext.contextPath}/resources/js/jquery-3.1.0.js"></script>
   <script type="text/javascript" src = "${pageContext.servletContext.contextPath}/resources/js/jquery.dynatable.js"></script>
+  <script type="text/javascript" src = "${pageContext.servletContext.contextPath}/resources/js/jquery.dataTables.min.js"></script>
   
   <spring:url value="/resources/js/lib/jquery-3.1.0.js" var="jqueryJs" />
   <spring:url value="/resources/css/base.css" var="basecss" />
@@ -103,12 +104,12 @@
           <label for="tabbed1">Top Up</label>
         </h1>
         <div>
-        <table id="offerTable" class="display" cellspacing="0" width="100%">
+        <table id="offerTable" cellspacing="0" width="100%">
         	<thead>
         	<tr>
-                <th>detail</th>
-                <th>amount</th>
-                <th>validity</th>
+                <th>Detail</th>
+                <th>Amount</th>
+                <th>Validity</th>
             </tr>
         </thead>
         <tbody>
@@ -210,25 +211,30 @@ $("#mobilenumber").focusout(function(){
 	    	 success: function(data){
 					$("#serviceProvider").val(data.operator_name);
 					$("#serviceCircle").val(data.circle_name);
-					$.dynatableSetup({
-					    table: {
-					        defaultColumnIdStyle: 'noStyle'
-					    }
-					});
-
-			
-					$.ajax({
+					
+					var table = $('##offerTable').DataTable( {
+						sAjaxSource: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val()
+					} );
+					 
+					table.on( 'xhr', function () {
+					    var json = table.ajax.json();
+					    alert( json.data.length +' row(s) were loaded' );
+					} );
+					/*$.ajax({
 						  url: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
 				    	  type:'get',
 				    	  dataType: 'json', 
 					      success: function(data){
 					    	           var dynatable = $('#offerTable').dynatable({
+					    	        	   table: {
+					    	        	       defaultColumnIdStyle: 'lowercase'
+					    	        	   },
 							   						dataset: {
-								        				    records: data
+								        				    records: JSON.parse(JSON.stringify(data))
 								      						}
 							 	  	 }).data('dynatable');
-								    dynatable.settings.dataset.originalRecords = data;
-								    dynatable.process();
+								   // dynatable.settings.dataset.originalRecords = data;
+								  //  dynatable.process();
 								    
 								  }
 					});
