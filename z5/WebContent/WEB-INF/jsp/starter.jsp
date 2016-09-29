@@ -202,7 +202,7 @@
 </div><!-- /#wrapper -->
 
 <script type="text/javascript">
-
+var tableVar;
 $("#mobilenumber").focusout(function(){
 			$.ajax({
 			 url: 'ajaxservice/geMobileInfo?mobileNumber='+$("#mobilenumber").val(),
@@ -212,7 +212,32 @@ $("#mobilenumber").focusout(function(){
 					$("#serviceProvider").val(data1.operator_name);
 					$("#serviceCircle").val(data1.circle_name);
 					
-					$('#offerTable').dataTable( {
+					/*var table;
+					if ($.fn.dataTable.isDataTable('#offerTable')) {
+					    table = $('#offerTable').DataTable();
+					}
+					else {
+					    table = $('#offerTable').DataTable( {
+					        paging: false
+					    } );
+					}*/	
+					
+					if ( $.fn.dataTable.isDataTable( '#offerTable' ) ) {
+						tableVar.DataTable().ajax.reload()
+					} else{
+						tableVar =  $('#offerTable').dataTable( {
+							"sAjaxSource": "ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
+							"sAjaxDataProp": "",
+							 
+							  "aoColumns": [
+							        { "mData": "Detail" },
+							        {"mData": "Amount" },
+							    { "mData": "Validity" }
+							    ]
+							} );
+						
+					}
+					/*$('#offerTable').dataTable( {
 						"columnDefs": [{
 						    "defaultContent": "-",
 						    "targets": "_all"
@@ -224,14 +249,11 @@ $("#mobilenumber").focusout(function(){
 											 aTargets: [ '_all' ]
 										  }],
 						    "dataSrc": function ( json ) {
-						    	var s= json.map(JSON.stringify);
-						    	return s;
+						    	//var s= json.map(JSON.stringify);
+						    	var s = JSON.stringify(json.records);
+						    	return json.records;
 						        //return json;
 						      }
-						/*    "columns": [
-    								{ data: "Detail" },
-    								{ data: "Amount" },
-    								{ data: "Validity" }]*/
 						  }
 						} );
 					
