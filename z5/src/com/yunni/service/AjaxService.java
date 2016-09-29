@@ -20,7 +20,10 @@ public class AjaxService {
 		 try {
 		 String mobileNumber = request.getParameter("mobileNumber");
 		 JoloApiInvoker joloApiInvoker = new JoloApiInvoker();
-		 OperatorCircleResponseVO operatorCircleResponseVO = joloApiInvoker.getOperatorAndCircleByMobileNumber(mobileNumber);
+		 //OperatorCircleResponseVO operatorCircleResponseVO = joloApiInvoker.getOperatorAndCircleByMobileNumber(mobileNumber);
+		 OperatorCircleResponseVO operatorCircleResponseVO = new OperatorCircleResponseVO();
+		 operatorCircleResponseVO.setCircle_code("6");
+		 operatorCircleResponseVO.setOperator_code("23");
 	 	 return gson.toJson(operatorCircleResponseVO);
 		} catch (Exception e) {
 			return e.getMessage();
@@ -33,8 +36,11 @@ public class AjaxService {
 		 String operatorName = request.getParameter("operatorName");
 		 String circleName = request.getParameter("circleName");
 		 JoloApiInvoker joloApiInvoker = new JoloApiInvoker();
-		 String result = joloApiInvoker.getOfferInfo(operatorName, circleName);
-		 result =  "{ \"records\":"+result+"}";
+		 //String result = joloApiInvoker.getOfferInfo(operatorName, circleName);
+		 String result = "{\"detail\" : \"detail1\", \"amount\" : \"50\", \"validity\" : \"2 days\"},{\"Detail\" : \"detail2\", \"Amount\" : \"150\", \"Validity\" : \"12 days\"}";
+		 //String result = "[\"Detail\" : \"detail1\", \"Amount\" : \"50\", \"Validity\" : \"2 days\"],[\"Detail\" : \"detail2\", \"Amount\" : \"150\", \"Validity\" : \"12 days\"]";
+		 //result =  "{ \"records\":["+result+"]}";
+		 result =  "["+result+"]";
 		 return result;
 		} catch (Exception e) {
 			return e.getMessage();

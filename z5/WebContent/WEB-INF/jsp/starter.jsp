@@ -104,12 +104,12 @@
           <label for="tabbed1">Top Up</label>
         </h1>
         <div>
-        <table id="offerTable" class="display" cellspacing="0" width="100%">
+        <table id="offerTable" class="display" width="100%">
         	<thead>
         	<tr>
-                <th>Detail</th>
-                <th>Amount</th>
-                <th>Validity</th>
+                <th id = "Detail">Detail</th>
+                <th id = "Amount">Amount</th>
+                <th id = "Validity">Validity</th>
             </tr>
         </thead>
         <tbody>
@@ -208,11 +208,46 @@ $("#mobilenumber").focusout(function(){
 			 url: 'ajaxservice/geMobileInfo?mobileNumber='+$("#mobilenumber").val(),
 	    	 type:'get',
 	    	 dataType: 'json', 
-	    	 success: function(data){
-					$("#serviceProvider").val(data.operator_name);
-					$("#serviceCircle").val(data.circle_name);
+	    	 success: function(data1){
+					$("#serviceProvider").val(data1.operator_name);
+					$("#serviceCircle").val(data1.circle_name);
 					
-				    $('#offerTable').DataTable( {
+					$('#offerTable').dataTable( {
+						"columnDefs": [{
+						    "defaultContent": "-",
+						    "targets": "_all"
+						  }],
+						  "ajax": {
+						    "url": "ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
+						    aoColumnDefs: [
+						                   {sDefaultContent: '',
+											 aTargets: [ '_all' ]
+										  }],
+						    "dataSrc": function ( json ) {
+						    	var s= json.map(JSON.stringify);
+						    	return s;
+						        //return json;
+						      }
+						/*    "columns": [
+    								{ data: "Detail" },
+    								{ data: "Amount" },
+    								{ data: "Validity" }]*/
+						  }
+						} );
+					
+					/*$.getJSON("ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(), function(response) {
+						  $('#offerTable').dataTable({
+						    processing: true,
+						    data: response.records,
+						    columns: [
+						      { data: "Detail"},
+						      { data: "Amount"},
+						      { data: "Validity"}
+						    ]
+						  });
+						});
+					
+				    /*$('#offerTable').DataTable( {
 				        "processing": true,
 				        "serverSide": true,
 				        "ajax": {
