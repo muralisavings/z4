@@ -202,7 +202,8 @@
 </div><!-- /#wrapper -->
 
 <script type="text/javascript">
-var tableVar;
+var dataTableVar;
+//var dataTableSettings = oTable.fnSettings();
 $("#mobilenumber").focusout(function(){
 			$.ajax({
 			 url: 'ajaxservice/geMobileInfo?mobileNumber='+$("#mobilenumber").val(),
@@ -221,13 +222,22 @@ $("#mobilenumber").focusout(function(){
 					        paging: false
 					    } );
 					}*/	
-					
+					var serviceProvider = $("#serviceProvider").val();
+					var circleName = $("#serviceCircle").val();
 					if ( $.fn.dataTable.isDataTable( '#offerTable' ) ) {
-						tableVar.DataTable().ajax.reload()
+						
+						dataTableVar.fnClearTable(0);
+						//dataTableVar.fnDraw();
+						//dataTableVar.fnReloadAjax("ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val());
+						dataTableVar.DataTable().ajax.reload();
+						//dataTableVar.fnReloadAjax("ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val());
+//						dataTableVar.fnSettings().sAjaxSource  = "ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val();
+						
 					} else{
-						tableVar =  $('#offerTable').dataTable( {
-							"sAjaxSource": "ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
+						dataTableVar =  $('#offerTable').dataTable( {
+							"sAjaxSource": "ajaxservice/getOfferInfo?operatorName="+serviceProvider+'&circleName='+circleName,
 							"sAjaxDataProp": "",
+							"bProcessing" : true,
 							 
 							  "aoColumns": [
 							        { "mData": "Detail" },
