@@ -20,10 +20,8 @@
   <spring:url value="/resources/css/base.css" var="basecss" />
   <spring:url value="/resources/css/style.css" var="stylecss" />
   <spring:url value="/resources/css/tabbed-panels.css" var="tabcss" />
-  <spring:url value="/resources/css/jquery.dataTables.min.css" var="tablecss" />
-  <spring:url value="/resources/css/jquery.dynatable.css" var = "dynatablecss"/>
-
-  
+  <spring:url value="/resources/css/jquery-dataTables-min.css" var="tablecss" />
+    
   <spring:url value="/resources/icons/mobile_r.jpg" var="mobile_r" />
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
@@ -32,8 +30,7 @@
   <link href="${tabcss}" rel="stylesheet">
   <link href="${tablecss}" rel="stylesheet">
   <link href="${mobile_r}" rel="stylesheet">
-    <link href="${dynatablecss}" rel="stylesheet">
-  
+   
  
   <!-- js -->
   <!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
@@ -213,151 +210,35 @@ $("#mobilenumber").focusout(function(){
 					$("#serviceProvider").val(data1.operator_name);
 					$("#serviceCircle").val(data1.circle_name);
 					
-					/*var table;
-					if ($.fn.dataTable.isDataTable('#offerTable')) {
-					    table = $('#offerTable').DataTable();
-					}
-					else {
-					    table = $('#offerTable').DataTable( {
-					        paging: false
-					    } );
-					}*/	
 					var serviceProvider = $("#serviceProvider").val();
 					var circleName = $("#serviceCircle").val();
-					if ( $.fn.dataTable.isDataTable( '#offerTable' ) ) {
-						
+					/*if($.fn.dataTable.isDataTable( '#offerTable' ) ) {
 						dataTableVar.fnClearTable(0);
-						//dataTableVar.fnDraw();
-						//dataTableVar.fnReloadAjax("ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val());
 						dataTableVar.DataTable().ajax.reload();
-						//dataTableVar.fnReloadAjax("ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val());
-//						dataTableVar.fnSettings().sAjaxSource  = "ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val();
-						
-					} else{
+					} else {*/
+						 $("#offerTable").dataTable().fnDestroy()
+
 						dataTableVar =  $('#offerTable').dataTable( {
 							"sAjaxSource": "ajaxservice/getOfferInfo?operatorName="+serviceProvider+'&circleName='+circleName,
 							"sAjaxDataProp": "",
 							"bProcessing" : true,
+							"scrollX": 200,
+							"scrollY": 200,
+							"bFilter": false,
+							"bPaginate": false,
 							 
 							  "aoColumns": [
-							        { "mData": "Detail" },
-							        {"mData": "Amount" },
-							    { "mData": "Validity" }
-							    ]
-							} );
-						
-					}
-					/*$('#offerTable').dataTable( {
-						"columnDefs": [{
-						    "defaultContent": "-",
-						    "targets": "_all"
-						  }],
-						  "ajax": {
-						    "url": "ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
-						    aoColumnDefs: [
-						                   {sDefaultContent: '',
-											 aTargets: [ '_all' ]
-										  }],
-						    "dataSrc": function ( json ) {
-						    	//var s= json.map(JSON.stringify);
-						    	var s = JSON.stringify(json.records);
-						    	return json.records;
-						        //return json;
-						      }
-						  }
-						} );
-					
-					/*$.getJSON("ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(), function(response) {
-						  $('#offerTable').dataTable({
-						    processing: true,
-						    data: response.records,
-						    columns: [
-						      { data: "Detail"},
-						      { data: "Amount"},
-						      { data: "Validity"}
-						    ]
-						  });
-						});
-					
-				    /*$('#offerTable').DataTable( {
-				        "processing": true,
-				        "serverSide": true,
-				        "ajax": {
-				            "url": "ajaxservice/getOfferInfo?operatorName="+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
-				            "type": "GET"
-				        },
-				        "columns": [
-				            { "records": "Detail" },
-				            { "records": "Amount" },
-				            { "records": "Validity" }
-				        ]
-				    } );
-					
-					/*var table = $('##offerTable').DataTable( {
-						sAjaxSource: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val()
-					} );
-					 
-					table.on( 'xhr', function () {
-					    var json = table.ajax.json();
-					    alert( json.data.length +' row(s) were loaded' );
-					} );*/
-					/*$.ajax({
-						  url: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
-				    	  type:'get',
-				    	  dataType: 'json', 
-					      success: function(data){
-					    	           var dynatable = $('#offerTable').dynatable({
-					    	        	   table: {
-					    	        	       defaultColumnIdStyle: 'lowercase'
-					    	        	   },
-							   						dataset: {
-								        				    records: JSON.parse(JSON.stringify(data))
-								      						}
-							 	  	 }).data('dynatable');
-								   // dynatable.settings.dataset.originalRecords = data;
-								  //  dynatable.process();
-								    
-								  }
-					});
-					
-					/*$('#offerTable').dynatable({
-						  dataset: {
-						    ajax: true,
-						    ajaxUrl: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
-						    ajaxOnLoad: true,
-						    records: []
-						  }
-						});
-						
-					/*$.ajax({
-						 url: 'ajaxservice/getOfferInfo?operatorName='+$("#serviceProvider").val()+'&circleName='+$("#serviceCircle").val(),
-				    	 type:'get',
-				    	 dataType: 'text', 
-				    	 success: function(data){
-				    		   $('#offerTable').empty()
-								var response = $.parseJSON(data);
-
-								$(function() {
-								    $.each(response, function(i, item) {
-								        var $tr = $('<tr>').append(
-								            $('<td>').text(item.Detail),
-								            $('<td>').text(item.Amount),
-								            $('<td>').text(item.Validity)
-								        ).appendTo('#offerTable');
-								    });
-								});
-							  },
-								  error: function(e){
-									  alert("Error11");
-								  }
-						});*/
-				  },
-					  error: function(e){
+									        { "mData": "Detail" },
+							    		    {"mData": "Amount" },
+								    		{ "mData": "Validity" }
+									  	  ]
+							});
+					 //}
+			       },
+				   error: function(e){
 						  alert("Error11");
-					  }
+				  }
 			});
-
-	
     
 });
 </script>
