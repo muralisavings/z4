@@ -41,7 +41,7 @@
   padding: 25px;
   background-color: #efefef;
   width: 20%;
-   height:350px;
+   height:420px;
 }
 #prepaidmobileplansdiv {
   float:left;
@@ -50,7 +50,7 @@
   background-color: #ff8040;
   width: 45%;
   display:block;
-  height:350px;
+  height:420px;
   overflow: auto;
 }
 
@@ -95,17 +95,17 @@ ol.input-list {
 }
 ol.input-list li {
   display: block;
-  padding: 0 10px;
+  padding: 10px;
   width: 100%;
   float: left;
 }
 
 @media all and (max-width: 800px) {
   ol.input-list {
-    margin: 0;
+    margin: 10;
   }
   ol.input-list li {
-    padding: 0;
+    padding: 10;
     width: 100%;
     float: none;
     margin-bottom: 10px;
@@ -175,7 +175,7 @@ ol.input-list li {
   transition: border 0.3s;
 }
 .style-4 input[type="text"]:focus, .style-4 input[type="text"].focus {
-  border-bottom: solid 2px #969696;
+  border-bottom: solid 2px #36d9f5;
 }
 
 /* ============================================================

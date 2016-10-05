@@ -104,9 +104,9 @@
         <table id="offerTable" class="display" width="100%">
         	<thead>
         	<tr>
-                <th id = "Detail">Detail</th>
                 <th id = "Amount">Amount</th>
                 <th id = "Validity">Validity</th>
+                <th id = "Detail">Detail</th>
             </tr>
         </thead>
         <tbody>
@@ -226,12 +226,21 @@ $("#mobilenumber").focusout(function(){
 							"scrollY": 200,
 							"bFilter": false,
 							"bPaginate": false,
+							"iDisplayLength" : 6,
+							"bInfo": false,
+							
 							 
 							  "aoColumns": [
-									        { "mData": "Detail" },
 							    		    {"mData": "Amount" },
-								    		{ "mData": "Validity" }
-									  	  ]
+								    		{ "mData": "Validity" },
+								    	      { "mData": "Detail" }
+									  	  ],
+							"autoWidth": false,
+							 columnDefs: [
+							              { width: '35px', targets: 0 }, //step 2, column 1 out of 4
+							              { width: '100px', targets: 1 }, //step 2, column 2 out of 4
+							              { width: '300px', targets: 2 }  //step 2, column 3 out of 4
+							           ]
 							});
 					 //}
 			       },
