@@ -83,10 +83,10 @@
             <input type="text" placeholder="MobileNumber" id="mobilenumber"> <span id="spnPhoneStatus"></span>
           </li>
           <li>
-            <input type="text" placeholder="Service Provider" id = "serviceProvider">
+            <input type="text" placeholder="Service Provider" id = "serviceProvider" readonly>
           </li>
           <li>
-            <input type="text" placeholder="Service Circle" id = "serviceCircle">
+            <input type="text" placeholder="Service Circle" id = "serviceCircle" readonly>
           </li>
           <li>
             <input type="text" placeholder="Amount" id = "amount">
@@ -199,73 +199,101 @@
 </div><!-- /#wrapper -->
 
 <script type="text/javascript">
-var dataTableVar;
+var offerTableVar;
+var currentMobileNumber;
+var currentServiceProvider;
+var currentCircleName;
+var isFirstTimeInValid = true;
+
+
+
 //var dataTableSettings = oTable.fnSettings();
-$("#mobilenumber").keydown(function(){
-	  //alert("Error11");
+$("#mobilenumber").keyup(function(){
   //  $('#mobilenumber').blur(function(e) {
-        if (validatePhone('mobilenumber')) {
-            //$('#spnPhoneStatus').html('Valid');
-            //$('#spnPhoneStatus').css('color', 'green');
+        if (validatePhone('mobilenumber') && $("#mobilenumber").val().length == 10) {
+        	isFirstTimeInValid = true;
             $('#mobilenumber').css('color', 'green');
+            if(currentMobileNumber == $("#mobilenumber").val()){
+            	$("#serviceProvider").val(currentServiceProvider);
+            	$("#serviceCircle").val(currentCircleName);
+            	//$('#offerTable').parents('div.dataTables_wrapper').first().show();
+            	 $('#offerTable').fadeIn("slow");
+            }
+            else if(currentMobileNumber != $("#mobilenumber").val()){
+            	$('#offerTable').fadeIn("slow");
+            	callAjaxService();
+            	currentMobileNumber = $("#mobilenumber").val();
+            	 
+            }
+            
         }
         else {
+        	if(isFirstTimeInValid ==true){
            // $('#spnPhoneStatus').html('Invalid');
            // $('#spnPhoneStatus').css('color', 'red');
             $('#mobilenumber').css('color', 'red');
+            $("#serviceProvider").val("");
+            $("#serviceCircle").val("")
+           // $("#offerTable").dataTable().fnClearTable();
+            //$("#offerTable").dataTable().fnClearTable();
+            //$('#offerTable').parents('div.dataTables_wrapper').first().hide();
+            $('#offerTable').fadeOut("slow");
+            isFirstTimeInValid = false;
+        	}
         }
-  //  });
-	
-	
-	
-			/*$.ajax({
-			 url: 'ajaxservice/geMobileInfo?mobileNumber='+$("#mobilenumber").val(),
-	    	 type:'get',
-	    	 dataType: 'json', 
-	    	 success: function(data1){
-					$("#serviceProvider").val(data1.operator_name);
-					$("#serviceCircle").val(data1.circle_name);
-					
-					var serviceProvider = $("#serviceProvider").val();
-					var circleName = $("#serviceCircle").val();
-					/*if($.fn.dataTable.isDataTable( '#offerTable' ) ) {
-						dataTableVar.fnClearTable(0);
-						dataTableVar.DataTable().ajax.reload();
-					} else {*/
-/*						 $("#offerTable").dataTable().fnDestroy()
-
-						dataTableVar =  $('#offerTable').dataTable( {
-							"sAjaxSource": "ajaxservice/getOfferInfo?operatorName="+serviceProvider+'&circleName='+circleName,
-							"sAjaxDataProp": "",
-							"bProcessing" : true,
-							"scrollX": 200,
-							"scrollY": 200,
-							"bFilter": false,
-							"bPaginate": false,
-							"iDisplayLength" : 6,
-							"bInfo": false,
-							
-							 
-							  "aoColumns": [
-							    		    {"mData": "Amount" },
-								    		{ "mData": "Validity" },
-								    	      { "mData": "Detail" }
-									  	  ],
-							"autoWidth": false,
-							 columnDefs: [
-							              { width: '35px', targets: 0 }, //step 2, column 1 out of 4
-							              { width: '100px', targets: 1 }, //step 2, column 2 out of 4
-							              { width: '300px', targets: 2 }  //step 2, column 3 out of 4
-							           ]
-							});
-					 //}
-			       },
-				   error: function(e){
-						  alert("Error11");
-				  }
-			});*/
-    
 });
+
+
+function callAjaxService(){
+	$.ajax({
+		 url: 'ajaxservice/geMobileInfo?mobileNumber='+$("#mobilenumber").val(),
+   	 type:'get',
+   	 dataType: 'json', 
+   	 success: function(data1){
+				$("#serviceProvider").val(data1.operator_name);
+				$("#serviceCircle").val(data1.circle_name);
+            	currentServiceProvider = $("#serviceProvider").val();
+            	currentCircleName = $("#serviceCircle").val();
+				
+				var serviceProvider = $("#serviceProvider").val();
+				var circleName = $("#serviceCircle").val();
+				/*if($.fn.dataTable.isDataTable( '#offerTable' ) ) {
+					dataTableVar.fnClearTable(0);
+					dataTableVar.DataTable().ajax.reload();
+				} else {*/
+					 $("#offerTable").dataTable().fnDestroy();
+
+					offerTableVar =  $('#offerTable').dataTable( {
+						"sAjaxSource": "ajaxservice/getOfferInfo?operatorName="+serviceProvider+'&circleName='+circleName,
+						"sAjaxDataProp": "",
+						"bProcessing" : true,
+						"scrollX": 200,
+						"scrollY": 200,
+						"bFilter": false,
+						"bPaginate": false,
+						"iDisplayLength" : 6,
+						"bInfo": false,
+						
+						 
+						  "aoColumns": [
+						    		    {"mData": "Amount" },
+							    		{ "mData": "Validity" },
+							    	      { "mData": "Detail" }
+								  	  ],
+						"autoWidth": false,
+						 columnDefs: [
+						              { width: '35px', targets: 0 }, //step 2, column 1 out of 4
+						              { width: '100px', targets: 1 }, //step 2, column 2 out of 4
+						              { width: '300px', targets: 2 }  //step 2, column 3 out of 4
+						           ]
+						});
+				 //}
+		       },
+			   error: function(e){
+					  alert("Error11");
+			  }
+		});
+}
 
 function validatePhone(txtPhone) {
     var a = document.getElementById(txtPhone).value;
