@@ -80,7 +80,7 @@
         <h2>Prepaid</h2>
 	    <ol class="input-list style-4 clearfix">
           <li>
-            <input type="text" placeholder="MobileNumber" id="mobilenumber">
+            <input type="text" placeholder="MobileNumber" id="mobilenumber"> <span id="spnPhoneStatus"></span>
           </li>
           <li>
             <input type="text" placeholder="Service Provider" id = "serviceProvider">
@@ -201,8 +201,24 @@
 <script type="text/javascript">
 var dataTableVar;
 //var dataTableSettings = oTable.fnSettings();
-$("#mobilenumber").focusout(function(){
-			$.ajax({
+$("#mobilenumber").keydown(function(){
+	  //alert("Error11");
+  //  $('#mobilenumber').blur(function(e) {
+        if (validatePhone('mobilenumber')) {
+            //$('#spnPhoneStatus').html('Valid');
+            //$('#spnPhoneStatus').css('color', 'green');
+            $('#mobilenumber').css('color', 'green');
+        }
+        else {
+           // $('#spnPhoneStatus').html('Invalid');
+           // $('#spnPhoneStatus').css('color', 'red');
+            $('#mobilenumber').css('color', 'red');
+        }
+  //  });
+	
+	
+	
+			/*$.ajax({
 			 url: 'ajaxservice/geMobileInfo?mobileNumber='+$("#mobilenumber").val(),
 	    	 type:'get',
 	    	 dataType: 'json', 
@@ -216,7 +232,7 @@ $("#mobilenumber").focusout(function(){
 						dataTableVar.fnClearTable(0);
 						dataTableVar.DataTable().ajax.reload();
 					} else {*/
-						 $("#offerTable").dataTable().fnDestroy()
+/*						 $("#offerTable").dataTable().fnDestroy()
 
 						dataTableVar =  $('#offerTable').dataTable( {
 							"sAjaxSource": "ajaxservice/getOfferInfo?operatorName="+serviceProvider+'&circleName='+circleName,
@@ -247,9 +263,20 @@ $("#mobilenumber").focusout(function(){
 				   error: function(e){
 						  alert("Error11");
 				  }
-			});
+			});*/
     
 });
+
+function validatePhone(txtPhone) {
+    var a = document.getElementById(txtPhone).value;
+    var filter = /^[0-9-+]+$/;
+    if (filter.test(a)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
 </script>
 
 </body>
