@@ -205,7 +205,41 @@ var currentServiceProvider;
 var currentCircleName;
 var isFirstTimeInValid = true;
 
+/*$(document).ready(function() {
+	$("#offerTable tbody").on('click', 'tr' ,function(event) {
+		$("#offerTable tbody tr").removeClass('row_selected');		
+		$(this).addClass('row_selected');
+	});
+});*/
 
+$(document).ready(function() {
+	
+	
+	/*$("#offerTable tbody").on('click',function(event) {
+		$("#offerTable tbody tr").removeClass('selected');		
+		$(this).addClass('selected');
+	});*/
+	
+	
+	var table = $('#offerTable').DataTable();
+
+	$('#offerTable tbody').on( 'click', 'tr', function () {
+	//table.$('tr.selected').removeClass('selected');
+	
+	if ( $(this).hasClass('selected') ) {
+	$(this).removeClass('selected');
+	}
+	else {
+		//$().$('tr.selected').removeClass('selected');
+	$("#offerTable tbody tr").removeClass('selected');
+	$(this).addClass('selected');
+	}
+	} );
+
+	/*$('#offerTable').click( function () {
+	//table.row('.selected').remove().draw( false );
+	} );*/
+	} );
 
 //var dataTableSettings = oTable.fnSettings();
 $("#mobilenumber").keyup(function(){
@@ -273,6 +307,9 @@ function callAjaxService(){
 						"bPaginate": false,
 						"iDisplayLength" : 6,
 						"bInfo": false,
+						select: {
+				            style: 'single'
+				        },
 						
 						 
 						  "aoColumns": [
@@ -287,6 +324,7 @@ function callAjaxService(){
 						              { width: '300px', targets: 2 }  //step 2, column 3 out of 4
 						           ]
 						});
+					
 				 //}
 		       },
 			   error: function(e){
