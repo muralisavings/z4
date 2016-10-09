@@ -14,6 +14,10 @@ import com.yunni.controller.joloapi.vo.OperatorCircleResponseVO;
 import com.yunni.controller.util.MapUtil;
 
 public class JoloApiInvoker {
+	JsonReader jsonReader = null;
+	{
+		jsonReader = new JsonReader();
+	}
 
 	public String getOperatorAndCircleByMobileNumberDuP(String mobileNo) throws Exception {
 	      URL url = new URL("http://joloapi.com/api/findoperator.php?userid=shivanyam&key=180714086798992&mob="+mobileNo+"&type=json");
@@ -36,10 +40,18 @@ public class JoloApiInvoker {
 	      return  result+" for http://joloapi.com/api/findoperator.php?userid=shivanyam&key=180714086798992&mob="+mobileNo+"&type=json";       
 	  }
 	  
-	  public String getOfferInfo(String operatorName, String circleName ) throws Exception {
+	  public String getOfferInfo(String operatorName, String circleName, String type) throws Exception {
 		  String operatorCode = MapUtil.getKey(OperatorCodes.operatorMap, operatorName);
 		  String circleCode = MapUtil.getKey(CircleCodes.circleMap, circleName);
-		  String result = JsonReader.readJsonArrayFromUrl("http://joloapi.com/api/findplan.php?userid=shivanyam&key=180714086798992&opt="+operatorCode+"&cir="+circleCode+"&typ=TUP&type=json");
+		  String result = jsonReader.readJsonArrayFromUrl("http://joloapi.com/api/findplan.php?userid=shivanyam&key=180714086798992&opt="+operatorCode+"&cir="+circleCode+"&typ="+type+"&type=json");
+		  return result;
+	  }
+	  
+	  public String recharge(String mobileNumber, String amount) throws Exception {
+		  
+		  String result = 
+				  jsonReader.readJsonArrayFromUrl
+				  ("http://joloapi.com/api/recharge.php?mode=0&userid=shivanyam&key=180714086798992&operator=TD&service="+mobileNumber+"&amount="+amount+"&orderid=58eer31&type=json");
 		  return result;
 	  }
 	

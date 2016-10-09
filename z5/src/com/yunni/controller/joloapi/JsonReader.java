@@ -9,6 +9,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -42,13 +43,17 @@ public class JsonReader {
     }
   }
   
-  public static String readJsonArrayFromUrl(String url) throws IOException, JSONException {
+  public String readJsonArrayFromUrl(String url) throws IOException, JSONException {
 	    InputStream is = new URL(url).openStream();
 	    String jsonText="";
 	    try {
 	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 	      jsonText = readAll(rd);
-	      return jsonText;
+	      if(isJSONValid(jsonText)){
+	    	  return jsonText;  
+	      } else{
+	    	  return "[{\"Amount\" : \"-\" , \"Detail\": \""+jsonText+"\", \"Validity\": \"-\" }]";
+	      }
 	    } catch(Exception e){
 	    	return e.getMessage();
 	    }
@@ -56,6 +61,21 @@ public class JsonReader {
 	      is.close();
 	    }
 	  }
+  
+  private boolean isJSONValid(String test) {
+	    try {
+	        new JSONObject(test);
+	    } catch (JSONException ex) {
+	        // edited, to include @Arthur's comment
+	        // e.g. in case JSONArray is valid as well...
+	        try {
+	            new JSONArray(test);
+	        } catch (JSONException ex1) {
+	            return false;
+	        }
+	    }
+	    return true;
+	}
   
   private static String readUrl(String urlString) throws Exception {
 	    BufferedReader reader = null;

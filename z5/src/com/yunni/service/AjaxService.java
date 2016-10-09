@@ -35,14 +35,27 @@ public class AjaxService {
 		 try {
 		 String operatorName = request.getParameter("operatorName");
 		 String circleName = request.getParameter("circleName");
+		 String offerType = request.getParameter("offerType");
 		 JoloApiInvoker joloApiInvoker = new JoloApiInvoker();
-		 String result = joloApiInvoker.getOfferInfo(operatorName, circleName);
+		 String result = joloApiInvoker.getOfferInfo(operatorName, circleName, offerType);
 		 //String result = "{\"Detail\" : \"detail1\", \"Amount\" : \"50\", \"Validity\" : \"2 days\"},{\"Detail\" : \"detail2\", \"Amount\" : \"150\", \"Validity\" : \"12 days\"},"
 		 	//	+ "{\"Detail\" : \"detail1\", \"Amount\" : \"50\", \"Validity\" : \"2 days\"},{\"Detail\" : \"detail2\", \"Amount\" : \"150\", \"Validity\" : \"12 days\"},{\"Detail\" : \"detail1\", \"Amount\" : \"50\", \"Validity\" : \"2 days\"},{\"Detail\" : \"detail2\", \"Amount\" : \"150\", \"Validity\" : \"12 days\"},{\"Detail\" : \"detail1\", \"Amount\" : \"50\", \"Validity\" : \"2 days\"},{\"Detail\" : \"detail2\", \"Amount\" : \"150\", \"Validity\" : \"12 days\"},{\"Detail\" : \"detail1\", \"Amount\" : \"50\", \"Validity\" : \"2 days\"},{\"Detail\" : \"detail2\", \"Amount\" : \"150\", \"Validity\" : \"12 days\"},{\"Detail\" : \"detail1\", \"Amount\" : \"50\", \"Validity\" : \"2 days\"},{\"Detail\" : \"detail2\", \"Amount\" : \"150\", \"Validity\" : \"12 days\"}";
 		 //String result = "[\"Detail\" : \"detail1\", \"Amount\" : \"50\", \"Validity\" : \"2 days\"],[\"Detail\" : \"detail2\", \"Amount\" : \"150\", \"Validity\" : \"12 days\"]";
 		 //result =  "{ \"records\":["+result+"]}";
 		 //result =  "["+result+"]";
 		 return result;
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
+	 
+	 @RequestMapping(value = "/recharge",  method=RequestMethod.GET)
+		protected @ResponseBody String recharge(HttpServletRequest request){
+		 try {
+		 String amount = request.getParameter("amount");
+		 String mobileNumber = request.getParameter("mobileNumber");
+		 JoloApiInvoker joloApiInvoker = new JoloApiInvoker();
+		 return joloApiInvoker.recharge(mobileNumber, amount);
 		} catch (Exception e) {
 			return e.getMessage();
 		}
