@@ -277,12 +277,22 @@ var currentCircleName;
 var isFirstTimeInValid = true;
 
 $(document).ready(function() {
-	var table = $('#offerTable').DataTable();
+
 	$('#offerTable tbody').on( 'click', 'tr', function () {
 		if ( $(this).hasClass('selected') ) {
 			$(this).removeClass('selected');
 		} else {
 			$("#offerTable tbody tr").removeClass('selected');
+			$(this).addClass('selected');
+		}
+	});
+	
+
+	$('#ftOfferTable tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('selected') ) {
+			$(this).removeClass('selected');
+		} else {
+			$("#ftOfferTable tbody tr").removeClass('selected');
 			$(this).addClass('selected');
 		}
 	});
@@ -302,28 +312,36 @@ $(document).ready(function() {
 			});
 	});
 	
-	$('#offerTable').click( function () {
-	//table.row('.selected').remove().draw( false );
-	$("#amount").val($('#offerTable').DataTable().cell('.selected', 0).data());
-	} );
+	applyAmountSelectEvents('#offerTable');
+	applyAmountSelectEvents('#ftOfferTable');
+	applyAmountSelectEvents('#2gOfferTable');
+	applyAmountSelectEvents('#3gOfferTable');
+	applyAmountSelectEvents('#smsOfferTable');
+	applyAmountSelectEvents('#localStdIsdOfferTable');
+	applyAmountSelectEvents('#roamingOfferTable');
+	
 	} );
 
-	$("#amount").keyup(function(){
-		$("#offerTable tbody tr").removeClass('selected');
-	var amount = $("#amount").val();
-	$('#offerTable').DataTable().rows().every( function ( rowIdx, tableLoop, rowLoop ) {
-	    var data = this.data();
-	    if(data.Amount == amount){
-	    	var $row = $("#offerTable tr").eq(rowIdx+1);
-	    	$row.trigger('click');
+	
 
-	    	
-	    	$(".dataTables_scrollBody").scrollTop(42*rowIdx+1);
-	    	
-	    	
-	    } 
-	} );
+
+$("#amount").keyup(function(){
+	$("#offerTable tbody tr").removeClass('selected');
+var amount = $("#amount").val();
+$('#offerTable').DataTable().rows().every( function ( rowIdx, tableLoop, rowLoop ) {
+    var data = this.data();
+    if(data.Amount == amount){
+    	var $row = $("#offerTable tr").eq(rowIdx+1);
+    	$row.trigger('click');
+
+    	
+    	$(".dataTables_scrollBody").scrollTop(42*rowIdx+1);
+    	
+    	
+    } 
+} );
 });
+
 
 
 $("#mobilenumber").keyup(function(){
@@ -353,6 +371,13 @@ $("#mobilenumber").keyup(function(){
         }
 });
 
+function applyAmountSelectEvents(tableId){
+	$(tableId).click( function () {
+		//table.row('.selected').remove().draw( false );
+		$("#amount").val($(tableId).DataTable().cell('.selected', 0).data());
+		} );
+
+}
 
 function callAjaxService(){
 	$.ajax({
