@@ -55,8 +55,13 @@
 .tabbed > input:checked + section > h1{
   position : relative;
   z-index  : 2;
-}
+  }
+
 
 .tabbed > input:not(:checked) + section > div{
   display : none;
+  }
+
+.tabbed > input:not(:checked) + section {
+	  color: #a6a6a6;
 }

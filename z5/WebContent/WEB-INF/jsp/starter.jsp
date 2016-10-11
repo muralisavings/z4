@@ -93,7 +93,7 @@
 					<li><input type="text" placeholder="Amount" id="amount" required>
 					<li>
 						<div class="buttonHolder">
-							<a id="rechargeButton" href="#" class="button tick"></a>
+							<a id="rechargeButton" href="" class="button tick"></a>
 						</div>
 					</li>
 
@@ -101,7 +101,7 @@
 			</div>
 			<div class="tabbed" id="prepaidmobileplansdiv">
 				<h2 id = "offerPlanelHeader">Operator -> Circle plans</h2>
-				<input name="tabbed" id="tabbed1" type="radio">
+				<input name="tabbed" id="tabbed1" type="radio"   checked="checked">
 				<section>
 					<h1>
 						<label for="tabbed1">Top Up</label>
@@ -120,7 +120,7 @@
 						</table>
 					</div>
 				</section>
-				<input name="tabbed" id="tabbed2" type="radio" checked="checked">
+				<input name="tabbed" id="tabbed2" type="radio">
 				<section>
 					<h1>
 						<label for="tabbed2">Full Talktime</label>
@@ -335,6 +335,8 @@
 		$(document)
 				.ready(
 						function() {
+							$("#prepaidmobileplansdiv").tabs();
+							
 							
 							document.getElementById("inputPanelHeader").innerHTML = "Mobile Prepaid";
 
@@ -362,7 +364,7 @@
 							applyAmountSelectEventsForAmount('#3gOfferTable');
 							applyAmountSelectEventsForAmount('#smsOfferTable');
 							applyAmountSelectEventsForAmount('#localStdIsdOfferTable');
-							applyAmountSelectEventsForAmount('#roamingOfferTable');
+							//applyAmountSelectEventsForAmount('#roamingOfferTable');
 
 							$('#rechargeButton')
 									.click(
@@ -399,15 +401,40 @@
 				if ($(this).hasClass('selected')) {
 					$(this).removeClass('selected');
 				} else {
-					$(tableId + " tbody tr").removeClass('selected');
+					clearAllTableSelection();
 					$(this).addClass('selected');
 				}
 			});
 		}
 		
+		function clearAllTableSelection(){
+			$("#offerTable tbody tr").removeClass('selected');
+			$("#ftOfferTable tbody tr").removeClass('selected');
+			$("#2gOfferTable tbody tr").removeClass('selected');
+			$("#3gOfferTable tbody tr").removeClass('selected');
+			$("#smsOfferTable tbody tr").removeClass('selected');
+			$("#localStdIsdOfferTable tbody tr").removeClass('selected');
+			$("#roamingOfferTable tbody tr").removeClass('selected');
+		}
+
+
+		$("#amount").keyup(
+				function() {
+					currentAmount = $("#amount").val();
+					navigateTableSelectionOnAmountEntry('#offerTable');
+					/*navigateTableSelectionOnAmountEntry('#ftOfferTable');
+					navigateTableSelectionOnAmountEntry('#2gOfferTable');
+					navigateTableSelectionOnAmountEntry('#3gOfferTable');
+					navigateTableSelectionOnAmountEntry('#smsOfferTable');
+					navigateTableSelectionOnAmountEntry('#localStdIsdOfferTable');
+					navigateTableSelectionOnAmountEntry('#roamingOfferTable');*/
+				});
+		
 		function navigateTableSelectionOnAmountEntry(tableId){
 			var amount = $("#amount").val();
 			$(tableId+" tbody tr").removeClass('selected');
+			//clearAllTableSelection();
+			//$("#prepaidmobileplansdiv").tabs("option", "active", 1);
 			$(tableId).DataTable().rows().every(
 					function(rowIdx, tableLoop, rowLoop) {
 						var data = this.data();
@@ -420,35 +447,24 @@
 						}
 					});
 		}
-
-		$("#amount").keyup(
-				function() {
-					currentAmount = $("#amount").val();
-					navigateTableSelectionOnAmountEntry('#offerTable');
-					navigateTableSelectionOnAmountEntry('#ftOfferTable');
-					navigateTableSelectionOnAmountEntry('#2gOfferTable');
-					navigateTableSelectionOnAmountEntry('#3gOfferTable');
-					navigateTableSelectionOnAmountEntry('#smsOfferTable');
-					navigateTableSelectionOnAmountEntry('#localStdIsdOfferTable');
-					navigateTableSelectionOnAmountEntry('#roamingOfferTable');
-				});
+		
 
 		$("#mobilenumber").keyup(
 				function() {
 					if (validatePhone('mobilenumber')
 							&& $("#mobilenumber").val().length == 10) {
 						isFirstTimeInValid = true;
-						$('#mobilenumber').css('color', 'green');
+						$('#mobilenumber').css('color', 'black');
 						if (currentMobileNumber == $("#mobilenumber").val()) {
 							$("#serviceProvider").val(currentServiceProvider);
 							$("#serviceCircle").val(currentCircleName);
 							$("#amount").val(currentAmount);
-							$('#offerTable').fadeIn("slow");
+							//$('#offerTable').fadeIn("slow");
 							document.getElementById("offerPlanelHeader").innerHTML = currentServiceProvider+" -> "+currentCircleName;
 						} else if (currentMobileNumber != $("#mobilenumber").val()) {
 							callAjaxService();
 							currentMobileNumber = $("#mobilenumber").val();
-							$('#offerTable').fadeIn("slow");
+							//$('#offerTable').fadeIn("slow");
 						}
 					} else {
 						if (isFirstTimeInValid == true) {
@@ -456,7 +472,7 @@
 							$("#serviceProvider").val("");
 							$("#serviceCircle").val("");
 							$("#amount").val("");
-							$('#offerTable').fadeOut("slow");
+							//$('#offerTable').fadeOut("slow");
 							isFirstTimeInValid = false;
 						}
 					}
@@ -501,8 +517,7 @@
 
 		function loadDataTable(circleName, serviceProvider, offerType, tableId) {
 			$(tableId).dataTable().fnDestroy();
-			$(tableId)
-					.dataTable(
+			$(tableId).dataTable(
 							{
 								"sAjaxSource" : "ajaxservice/getOfferInfo?operatorName="
 										+ serviceProvider
@@ -529,7 +544,7 @@
 								}, {
 									"mData" : "Detail"
 								} ],
-								"autoWidth" : false,
+								"autoWidth" : true,
 								columnDefs : [ {
 									width : '35px',
 									targets : 0
@@ -541,6 +556,9 @@
 									targets : 2
 								} ]
 							});
+			//$(tableId).dataTable().fnAdjustColumnSizing( false );
+			
+			//$table.closest(".dataTables_wrapper").find("*").css("box-sizing","content-box").css("-moz-box-sizing","content-box");
 		}
 
 		function validatePhone(txtPhone) {
