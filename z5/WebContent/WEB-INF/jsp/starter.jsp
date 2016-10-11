@@ -379,7 +379,7 @@
 																			alert(data1);
 																	},
 															error : function(e) {
-																alert("Error11");
+																alert("Under Construction");
 															}
 														});
 											});
@@ -462,6 +462,8 @@
 							//$('#offerTable').fadeIn("slow");
 							document.getElementById("offerPlanelHeader").innerHTML = currentServiceProvider+" -> "+currentCircleName;
 						} else if (currentMobileNumber != $("#mobilenumber").val()) {
+							$("#serviceProvider").val("Loading...");
+							$("#serviceCircle").val("Loading...");
 							callAjaxService();
 							currentMobileNumber = $("#mobilenumber").val();
 							//$('#offerTable').fadeIn("slow");
