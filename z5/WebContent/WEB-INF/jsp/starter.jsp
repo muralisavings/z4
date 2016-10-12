@@ -83,9 +83,11 @@
 			<div id="leftadsDiv"></div>
 			<div id="prepaidmobileinputdiv">
 				<h2 id = "inputPanelHeader">Prepaid</h2>
-				<ol class="input-list style-4 clearfix">
-					<li><input type="text" placeholder="MobileNumber"
-						id="mobilenumber" required> <span id="spnPhoneStatus"></span></li>
+			
+				<ol class="input-list style-1 clearfix">
+					<li>
+					<input type="text" placeholder="MobileNumber"
+						id="mobilenumber" required></li>
 					<li><input type="text" placeholder="Service Provider"
 						id="serviceProvider" required></li>
 					<li><input type="text" placeholder="Service Circle"
@@ -96,7 +98,6 @@
 							<a id="rechargeButton" href="" class="button tick"></a>
 						</div>
 					</li>
-
 				</ol>
 			</div>
 			<div class="tabbed" id="prepaidmobileplansdiv">

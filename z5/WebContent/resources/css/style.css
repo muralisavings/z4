@@ -65,24 +65,6 @@ label {
   display: block;
 }
 
-/*input[type="text"] {
-  display: block;
-  margin: 0;
-  width: 100%;
-  font-family: "Open Sans", sans-serif;
-  font-size: 18px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  -webkit-border-radius: none;
-  -moz-border-radius: none;
-  -ms-border-radius: none;
-  -o-border-radius: none;
-  border-radius: none;
-}*/
 input[type="text"]:focus {
   outline: none;
 }
@@ -176,6 +158,7 @@ ol.input-list li {
   -moz-transition: border 0.3s;
   -o-transition: border 0.3s;
   transition: border 0.3s;
+  font-size : medium;
   box-shadow: 0 3px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
 }
 .style-4 input[type="text"]:focus, .style-4 input[type="text"].focus {
@@ -263,3 +246,20 @@ ol.input-list li {
 			color:#dbd2d2;
 			text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
 		}
+		
+		#mobilenumber {
+    background: white url(mobile-phone.png) left no-repeat;
+    padding-left: 25px;
+}
+#serviceProvider {
+    background: white url(circle.png) left no-repeat;
+    padding-left: 25px;
+}
+#serviceCircle {
+    background: white url(circle.png) left no-repeat;
+    padding-left: 25px;
+}
+#amount {
+    background: white url(amount.png) left no-repeat ;
+    padding-left: 25px;
+}
