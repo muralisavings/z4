@@ -39,7 +39,7 @@
   float:left;
   margin-bottom: 60px;
   padding: 25px;
-  background-color: #efefef;
+  background-color: #e1e1e1;
   width: 20%;
    height:420px;
 }
@@ -48,7 +48,7 @@
   float:left;
   margin-bottom: 20px;
   padding: 25px;
-  background-color: #ff8040;
+  background-color: #e1e1e1;
   width: 45%;
   display:block;
   height:420px;
@@ -108,8 +108,8 @@ ol.input-list li {
   transition: box-shadow 0.3s, border 0.3s;
 }
 .style-1 input[type="text"]:focus, .style-1 input[type="text"].focus {
-  border: solid 1px #707070;
-  -webkit-box-shadow: 0 0 5px 1px #969696;
+  border: solid 1px #00ff00;
+  -webkit-box-shadow: 0 0 5px 1px #00ff00;
   -moz-box-shadow: 0 0 5px 1px #969696;
   box-shadow: 0 0 5px 1px #969696;
 }

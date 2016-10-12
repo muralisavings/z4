@@ -319,12 +319,16 @@
 								"Madhya Pradesh"];
 		
 		$('#serviceProvider').autocomplete({
+			  minLength: 0,
 		      source: availableServiceProviders
 		    });
 		$('#serviceCircle').autocomplete({
+			  minLength: 0,
 		      source: availableCicles
 		    });
 		});
+	
+		
 	
 		var currentMobileNumber;
 		var currentServiceProvider;
@@ -366,7 +370,12 @@
 							applyAmountSelectEventsForAmount('#smsOfferTable');
 							applyAmountSelectEventsForAmount('#localStdIsdOfferTable');
 							//applyAmountSelectEventsForAmount('#roamingOfferTable');
-
+$('#serviceProvider').click(function() {
+	$("#serviceProvider").autocomplete( "search", "" );
+		});
+		$('#serviceCircle').click(function() {
+			$("#serviceCircle").autocomplete( "search", "" );
+			});
 							$('#rechargeButton')
 									.click(
 											function() {
