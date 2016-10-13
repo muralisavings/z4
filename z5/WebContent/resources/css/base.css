@@ -103,6 +103,16 @@ a:hover {
   width: 100%;
   margin: 0 auto;
 }
+.maintabs input {
+  display: none;
+}
+
+.maintabs input:checked + label {
+  color: #555;
+  border: 1px solid #ddd;
+  border-top: 2px solid orange;
+  border-bottom: 1px solid #fff;
+}
 
 
 /* ============================================================
@@ -293,5 +303,9 @@ footer .copyright a {
     float: none;
     margin: 0 auto;
     margin-bottom: 15px;
+  }
+  
+  #mobileTab:checked ~ #mobileSection{
+  	display: block;
   }
 }

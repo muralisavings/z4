@@ -11,12 +11,14 @@
 }
 
 #topbuttonsDiv{
+	margin: 0 auto;
 	margin-left: 17.5%;
-	background-color: #ff0000;
+	background-color: #e1e1e1;
 	float:left;
 	width: 65%;
   	height:40px;
   	min-height: 5px;
+  	display: block;
 }
 
 #leftadsDiv {
@@ -44,6 +46,7 @@
    height:420px;
 }
 
+
 #prepaidmobileplansdiv {
   float:left;
   margin-bottom: 20px;
@@ -54,6 +57,8 @@
   height:420px;
   overflow: auto;
 }
+
+
 
 /* headings */
 h2 {
@@ -247,7 +252,7 @@ ol.input-list li {
 			text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
 		}
 		
-		#mobilenumber {
+#mobilenumber {
     background: white url(mobile-phone.png) left no-repeat;
     padding-left: 25px;
 }
@@ -263,3 +268,43 @@ ol.input-list li {
     background: white url(amount.png) left no-repeat ;
     padding-left: 25px;
 }
+
+
+
+
+#mobileLabel {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+  background: #e1e1e1 url(mobile-phone.png) left no-repeat;
+}
+
+#mobileLabel:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+#dthLabel {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #bbb;
+  border: 1px solid transparent;
+  background: #e1e1e1 url(dth.png) left no-repeat;
+}
+
+#dthLabel:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+
+

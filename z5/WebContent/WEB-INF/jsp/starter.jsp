@@ -71,20 +71,23 @@
 
 		</header>
 
-		<div id="topbuttonsDiv">
-			<section id="mobileSection">
-				<img src="/resources/icons/mobile.png"> <img alt="Image"
-					src="/resources/icons/mobile.png" />
-
-			</section>
+		<div id="topbuttonsDiv" class="maintabs">
+			<input id="mobileTab" type="radio" name="tabs" checked>
+  			<label id="mobileLabel" for="mobileTab">Mobile</label>
+    
+  			<input id="dthTab" type="radio" name="tabs">
+  			<label id = "dthLabel" for="dthTab">DTH</label>
+    
 		</div>
 
 		<div id="mainDiv">
 			<div id="leftadsDiv"></div>
+
+	<section id = "mobileSection">
 			<div id="prepaidmobileinputdiv">
 				<h2 id = "inputPanelHeader">Prepaid</h2>
 			
-				<ol class="input-list style-1 clearfix">
+				<ol class="input-list style-5 clearfix">
 					<li>
 					<input type="text" placeholder="MobileNumber"
 						id="mobilenumber" required></li>
@@ -100,6 +103,7 @@
 					</li>
 				</ol>
 			</div>
+
 			<div class="tabbed" id="prepaidmobileplansdiv">
 				<h2 id = "offerPlanelHeader">Operator -> Circle plans</h2>
 				<input name="tabbed" id="tabbed1" type="radio"   checked="checked">
@@ -237,6 +241,7 @@
 				</section>
 
 			</div>
+	</section>
 
 			<div id="rightadsDiv">
 				<h2>right adds</h2>
