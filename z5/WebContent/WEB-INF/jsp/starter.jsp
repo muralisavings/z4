@@ -49,9 +49,9 @@
 
 <body>
 	<div id="wrapper">
-		<div class="info-bar">
+		<!-- <div class="info-bar" hidden="true">
 			<div class="container"></div>
-		</div>
+		</div>-->
 		<!-- /.info-bar -->
 		<header>
 			<div class="branding">
@@ -87,15 +87,15 @@
 			<div id="prepaidmobileinputdiv">
 				<h2 id = "inputPanelHeader">Prepaid</h2>
 			
-				<ol class="input-list style-5 clearfix">
+				<ol class="input-list style-6 clearfix">
 					<li>
 					<input type="text" placeholder="MobileNumber"
-						id="mobilenumber" required></li>
+						id="mobilenumber"></li>
 					<li><input type="text" placeholder="Service Provider"
-						id="serviceProvider" required></li>
+						id="serviceProvider"></li>
 					<li><input type="text" placeholder="Service Circle"
-						id="serviceCircle" required></li>
-					<li><input type="text" placeholder="Amount" id="amount" required>
+						id="serviceCircle"></li>
+					<li><input type="text" placeholder="Amount" id="amount">
 					<li>
 						<div class="buttonHolder">
 							<a id="rechargeButton" href="" class="button tick"></a>
@@ -244,7 +244,7 @@
 	</section>
 
 			<div id="rightadsDiv">
-				<h2>right adds</h2>
+
 			</div>
 
 		</div>

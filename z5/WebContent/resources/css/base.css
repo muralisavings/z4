@@ -65,7 +65,7 @@ a img {
 }
 
 body {
-  background-color: #334144;
+  background-color: white;
   color: #505050;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
@@ -102,6 +102,7 @@ a:hover {
 #wrapper {
   width: 100%;
   margin: 0 auto;
+  background-color: red;
 }
 .maintabs input {
   display: none;
@@ -118,8 +119,13 @@ a:hover {
 /* ============================================================
   INFO BAR
 ============================================================ */
-.info-bar {
-  background-color: #334144;
+/*.info-bar {
+background-color: #a5b8da; background-image: -webkit-gradient(linear, left top, left bottom, from(#a5b8da), to(#7089b3));
+ background-image: -webkit-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: -moz-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: -ms-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: -o-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: linear-gradient(to bottom, #a5b8da, #7089b3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#a5b8da, endColorstr=#7089b3);
   text-align: center;
 }
 .info-bar a.icon {
@@ -128,30 +134,26 @@ a:hover {
   color: #fff;
   font-size: 20px;
   position: relative;
-}
-.info-bar a.icon[data-title]:hover:after {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 20px;
-  content: attr(data-title);
-  padding: 5px 10px;
-  background-color: #9e1a37;
-  font-family: "Open Sans", sans-serif;
-  color: #fff;
-  font-size: 12px;
-  white-space: nowrap;
-}
+}*/
+.branding {
+ height: 100px;
+ background-color: #a5b8da; background-image: -webkit-gradient(linear, left top, left bottom, from(#a5b8da), to(#7089b3));
+ background-image: -webkit-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: -moz-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: -ms-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: -o-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: linear-gradient(to bottom, #a5b8da, #7089b3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#a5b8da, endColorstr=#7089b3);
+ padding: 0 30px 0 90px;
 
+	}
 /* ============================================================
   HEADER
 ============================================================ */
 header .branding {
-  padding: 30px 0;
-  background-color: #334144;
+  padding: 0 30px 0 90px;
 }
 header .branding .container {
-  padding: 0 30px 0 90px;
+  
 }
 header .social {
   float: left;
@@ -201,7 +203,7 @@ header .logo {
   margin-left: -60px;
 }
 header .site-title {
-  background-color: #334144;
+  background-color: white;
   padding: 10px 30px;
   text-align: center;
 }
@@ -209,17 +211,26 @@ header .site-title h1 {
   font-size: 12px;
   margin: 0;
   padding: 0;
-  color: #fff;
+  color: #004080;
 }
 
 /* ============================================================
   FOOTER
 ============================================================ */
 footer {
-  padding: 30px 0;
+  height: 20%;
+ background-color: #a5b8da; background-image: -webkit-gradient(linear, left top, left bottom, from(#a5b8da), to(#7089b3));
+ background-image: -webkit-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: -moz-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: -ms-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: -o-linear-gradient(top, #a5b8da, #7089b3);
+ background-image: linear-gradient(to bottom, #a5b8da, #7089b3);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#a5b8da, endColorstr=#7089b3);
+ 
+  
 }
 footer .container {
   padding: 0 30px;
+  
 }
 footer aside {
   width: 33.3333%;
@@ -247,7 +258,7 @@ footer .copyright span {
   color: #fff;
 }
 footer .copyright a {
-  color: #ea8097;
+  color: #ffffff;
 }
 
 /* ============================================================
