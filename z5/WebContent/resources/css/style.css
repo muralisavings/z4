@@ -1,63 +1,82 @@
 /* ============================================================
   COMMON
 ============================================================ */
-#mainDiv {
-  background-color: white;
-  width: 100%;
-  height: 60%;
-  min-height: 1px;
-  float: left;
-  /*display: inline-block;*/
+
+#leftadsDiv {
+	background-color: transparent;
+	width : 17.5%;
+	min-height: 1px;
+	height:100%;
+	float: left;
+	display: inline-block;
 }
 
-#topbuttonsDiv{
+
+#topbuttonsDiv {
 	margin: 0 auto;
-	margin-left: 17.5%;
-	background-color: white;
+	background-color: transparent;
 	float:left;
 	width: 65%;
-  	height:40px;
-  	min-height: 5px;
+  	height:15%;
   	display: block;
 }
 
-#leftadsDiv {
-	background-color: #400040;
-	width : 17.5%;
+
+#rightadsDiv {
+	background-color: transparent;
 	min-height: 1px;
+	height:100%;
+	width : 17.5%;
 	float: left;
 	display: inline-block;
 }
 
-#rightadsDiv {
-	background-color: white;
-	min-height: 1px;
-	width : 17.5%;
-	float: left;
-	display: inline-block;
+
+#workAreaMainDiv {
+	float:left;
+	width: 65%;
+	height:100%;
+	background-color: transparent;
 }
+
+
+#topbuttonsDiv{
+	height:10%;
+	width: 100%;	
+}
+
+
+#workAreaDiv {
+	float:left;
+	height: 90%;
+	width: 100%;
+	background-color: transparent;
+}
+
+
+#inputPanelHeader {
+ padding-top: 3%;
+ padding-left: 2%;	
+}
+
 
 #prepaidmobileinputdiv {
   float:left;
-  margin-bottom: 60px;
-  padding: 25px;
-  width: 20%;
-  height:420px;
-  background-color: white;
+  padding-left: 4%;
+  width: 30%;
+  height:100%;
+  background-color: transparent;
  }
+ 
 #prepaidmobileplansdiv {
   float:left;
-  margin-bottom: 20px;
-  padding: 25px;
-  width: 45%;
+  height:100%;
+  width: 70%;
   display:block;
-  height:420px;
   overflow: auto;
-  background-color: white;
+  background-color: transparent;
   border: none;
-
 }
-
 
 /* headings */
 h2 {
@@ -93,10 +112,9 @@ ol.input-list li {
     margin: 10;
   }
   ol.input-list li {
-    padding: 10;
+    padding: 10%;
     width: 100%;
     float: none;
-    margin-bottom: 10px;
   }
 }
 
@@ -111,12 +129,14 @@ ol.input-list li {
   -o-transition: box-shadow 0.3s, border 0.3s;
   transition: box-shadow 0.3s, border 0.3s;
 }
+
 .style-1 input[type="text"]:focus, .style-1 input[type="text"].focus {
   border: solid 1px #00ff00;
   -webkit-box-shadow: 0 0 5px 1px #00ff00;
   -moz-box-shadow: 0 0 5px 1px #969696;
   box-shadow: 0 0 5px 1px #969696;
 }
+
 
 /* ============================================================
   STYLE 2
@@ -129,6 +149,7 @@ ol.input-list li {
   -o-transition: border 0.3s;
   transition: border 0.3s;
 }
+
 .style-2 input[type="text"]:focus, .style-2 input[type="text"].focus {
   border: solid 5px #969696;
 }
@@ -147,6 +168,7 @@ ol.input-list li {
   -o-transition: box-shadow 0.3s, border 0.3s;
   transition: box-shadow 0.3s, border 0.3s;
 }
+
 .style-3 input[type="text"]:focus, .style-3 input[type="text"].focus {
   border: solid 5px #969696;
 }
@@ -165,6 +187,7 @@ ol.input-list li {
   font-size : medium;
   box-shadow: 0 3px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
 }
+
 .style-4 input[type="text"]:focus, .style-4 input[type="text"].focus {
   border-bottom: solid 2px #000000;
   box-shadow: 0 3px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
@@ -195,6 +218,7 @@ ol.input-list li {
   STYLE 6
 ============================================================ */
 .style-6 input[type="text"] {
+ background-color: black;
   padding: 10px;
   border: none;
   border-bottom: solid 2px #c9c9c9;
@@ -203,7 +227,9 @@ ol.input-list li {
   -o-transition: box-shadow 0.3s, border 0.3s;
   transition: box-shadow 0.3s, border 0.3s;
 }
+
 .style-6 input[type="text"]:focus, .style-1 input[type="text"].focus {
+  background-color: black;	 
   border:none;
  border-bottom: solid 2px #7171ff;
   -webkit-transition: box-shadow 0.3s, border 0.3s;
@@ -212,16 +238,14 @@ ol.input-list li {
   transition: box-shadow 0.3s, border 0.3s;
 }
 
-
-
 .button {
 			background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
 			background-image: linear-gradient(top, #f4f1ee, #fff);
 			border-radius: 50%;
 			box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
 			float:left;
-			height: 60px;
-			margin-top:15px;
+			height: 40px;
+			margin-top:10px;
 			margin-left:35px;
 			position: relative;
 			width: 100px;			
@@ -229,7 +253,7 @@ ol.input-list li {
 			transition: all .1s linear;
 		}
 
-		.button:after{
+		.button:after {
 			color:#e9e6e4;
 			content: "aaa";
 			display: block;
@@ -238,16 +262,16 @@ ol.input-list li {
 			text-decoration: none;
 			text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
 			position: absolute;
-			width: 30px;
+			width: 31px;
 		}
-
 
 		.tick:after{
 			content: "Recharge";
-			left:17px;
-			top:15px;
+			position: relative;
+			left:23px;
+			top:10px;
 			font-family: "Open Sans", sans-serif;
-  			font-size: 15px;
+  			font-size: 13px;
 		}
 	
 		.button:hover{
@@ -276,33 +300,34 @@ ol.input-list li {
     background: white url(mobile-phone.png) left no-repeat;
     padding-left: 25px;
 }
+
 #serviceProvider {
     background: white url(circle.png) left no-repeat;
     padding-left: 25px;
 }
+
 #serviceCircle {
     background: white url(circle.png) left no-repeat;
     padding-left: 25px;
 }
+
 #amount {
     background: white url(amount.png) left no-repeat ;
     padding-left: 25px;
 }
-
 
 .maintabs label {
   display: inline-block;
   padding: 15px 25px;
   font-weight: 600;
   
-  border:1px solid #d1dcdf; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+ border:1px solid #d1dcdf; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
  background-color: #f2f5f6; background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f5f6), to(#c8d7dc));
  background-image: -webkit-linear-gradient(top, #f2f5f6, #c8d7dc);
  background-image: -moz-linear-gradient(top, #f2f5f6, #c8d7dc);
  background-image: -ms-linear-gradient(top, #f2f5f6, #c8d7dc);
  background-image: -o-linear-gradient(top, #f2f5f6, #c8d7dc);
  background-image: linear-gradient(to bottom, #f2f5f6, #c8d7dc);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f2f5f6, endColorstr=#c8d7dc);
-  
 }
 
 .maintabs label :hover{
@@ -330,3 +355,6 @@ ol.input-list li {
   content: '\f17d';
 }
 
+#mobilenumber, #serviceProvider, #serviceCircle, #amount{
+	background-color: transparent;
+}

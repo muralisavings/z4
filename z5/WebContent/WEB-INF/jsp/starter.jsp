@@ -22,332 +22,274 @@
 <spring:url value="/resources/css/base.css" var="basecss" />
 <spring:url value="/resources/css/style.css" var="stylecss" />
 <spring:url value="/resources/css/tabbed-panels.css" var="tabcss" />
-<spring:url value="/resources/css/jquery-dataTables-min.css"
-	var="tablecss"/>
-<spring:url value="/resources/css/jquery-ui.css"
-	var="jqueryUicss"/>
-
-	
-
+<spring:url value="/resources/css/jquery-dataTables-min.css" var="tablecss" />
+<spring:url value="/resources/css/jquery-ui.css" var="jqueryUicss" />
 <spring:url value="/resources/icons/mobile_r.jpg" var="mobile_r" />
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700'
-	rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Bitter:400,700'
-	rel='stylesheet' type='text/css'>
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700'	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
 <link href="${basecss}" rel="stylesheet">
 <link href="${stylecss}" rel="stylesheet">
 <link href="${tabcss}" rel="stylesheet">
 <link href="${tablecss}" rel="stylesheet">
 <link href="${mobile_r}" rel="stylesheet">
 <link href="${jqueryUicss}" rel="stylesheet">
-
-
-<!-- js -->
-<!--[if lt IE 9]><script src="js/html5shiv.js"></script><![endif]-->
 </head>
-
 <body>
-	<div id="wrapper">
-		<!-- <div class="info-bar" hidden="true">
-			<div class="container"></div>
-		</div>-->
-		<!-- /.info-bar -->
-		<header>
+		<header id = "headerId">
 			<div class="branding">
 				<div class="container clearfix">
 					<div class="logo"></div>
-
 				</div>
 			</div>
-			<!-- /.branding -->
-
 			<div class="site-title">
 				<div class="container">
 					<h1>Welcome Guest!!!</h1>
 				</div>
 			</div>
 			<!-- /.site-title -->
-
 		</header>
 
-		<div id="topbuttonsDiv" class="maintabs">
-			<input id="mobileTab" type="radio" name="tabs" checked>
-  			<label id="mobileLabel" for="mobileTab">Mobile</label>
-    
-  			<input id="dthTab" type="radio" name="tabs">
-  			<label id = "dthLabel" for="dthTab">DTH</label>
-    
-		</div>
+<!-- 	<div id="wrapper"> -->
 
 		<div id="mainDiv">
 			<div id="leftadsDiv"></div>
+			<div id = "workAreaMainDiv">
+			<div id="topbuttonsDiv" class="maintabs">
+				<input id="mobileTab" type="radio" name="tabs" checked> <label
+					id="mobileLabel" for="mobileTab">Mobile</label> <input id="dthTab"
+					type="radio" name="tabs"> <label id="dthLabel" for="dthTab">DTH</label>
+			</div>
 
-	<section id = "mobileSection">
-			<div id="prepaidmobileinputdiv">
-				<h2 id = "inputPanelHeader">Prepaid</h2>
-			
-				<ol class="input-list style-6 clearfix">
-					<li>
-					<input type="text" placeholder="MobileNumber"
-						id="mobilenumber"></li>
-					<li><input type="text" placeholder="Service Provider"
-						id="serviceProvider"></li>
-					<li><input type="text" placeholder="Service Circle"
-						id="serviceCircle"></li>
-					<li><input type="text" placeholder="Amount" id="amount">
-					<li>
-						<div class="buttonHolder">
-							<a id="rechargeButton" href="" class="button tick"></a>
+			<div id = "workAreaDiv">
+				<section id="mobileSection">
+					<div id="prepaidmobileinputdiv">
+						<h3 id="inputPanelHeader"></h3>
+						<ol class="input-list style-6 clearfix">
+							<li><input type="text" placeholder="MobileNumber"
+								id="mobilenumber"></li>
+							<li><input type="text" placeholder="Service Provider"
+								id="serviceProvider"></li>
+							<li><input type="text" placeholder="Service Circle"
+								id="serviceCircle"></li>
+							<li><input type="text" placeholder="Amount" id="amount"><li>
+								<div class="buttonHolder">
+									<a id="rechargeButton" href="" class="button tick"></a>
+								</div>
+							</li>
+						</ol>
+					</div>
+
+					<div class="tabbed" id="prepaidmobileplansdiv">
+						<h3 id="offerPlanelHeader">Operator -> Circle plans</h3>
+						<input name="tabbed" id="tabbed1" type="radio" checked="checked">
+						<section>
+							<h1>
+							<label for="tabbed1">Top Up</label>
+							</h1>
+						<div>
+							<table id="offerTable" class="display" width="100%">
+								<thead>
+									<tr>
+										<th id="Amount">Amount</th>
+										<th id="Validity">Validity</th>
+										<th id="Detail">Detail</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
 						</div>
-					</li>
-				</ol>
-			</div>
+					</section>
+					<input name="tabbed" id="tabbed2" type="radio">
+					<section>
+						<h1>
+							<label for="tabbed2">Full Talktime</label>
+						</h1>
+						<div>
+							<table id="ftOfferTable" class="display" width="100%">
+								<thead>
+									<tr>
+										<th id="Amount">Amount</th>
+										<th id="Validity">Validity</th>
+										<th id="Detail">Detail</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</section>
+					<input name="tabbed" id="tabbed3" type="radio">
+					<section>
+						<h1>
+							<label for="tabbed3">2G</label>
+						</h1>
+						<div>
+							<table id="2gOfferTable" class="display" width="100%">
+								<thead>
+									<tr>
+										<th id="Amount">Amount</th>
+										<th id="Validity">Validity</th>
+										<th id="Detail">Detail</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</section>
+					<input name="tabbed" id="tabbed4" type="radio">
+					<section>
+						<h1>
+							<label for="tabbed4">3G/4G</label>
+						</h1>
+						<div>
+							<table id="3gOfferTable" class="display" width="100%">
+								<thead>
+									<tr>
+										<th id="Amount">Amount</th>
+										<th id="Validity">Validity</th>
+										<th id="Detail">Detail</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</section>
+					<input name="tabbed" id="tabbed5" type="radio">
+					<section>
+						<h1>
+							<label for="tabbed5">SMS</label>
+						</h1>
+						<div>
+							<table id="smsOfferTable" class="display" width="100%">
+								<thead>
+									<tr>
+										<th id="Amount">Amount</th>
+										<th id="Validity">Validity</th>
+										<th id="Detail">Detail</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</section>
+					<input name="tabbed" id="tabbed6" type="radio">
+					<section>
+						<h1>
+							 <label for="tabbed6">Local/STD/ISD</label>
+						</h1>
+						<div>
+							<table id="localStdIsdOfferTable" class="display" width="100%">
+								<thead>
+									<tr>
+										<th id="Amount">Amount</th>
+										<th id="Validity">Validity</th>
+										<th id="Detail">Detail</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</section>
+					<input name="tabbed" id="tabbed7" type="radio">
+					<section>
+						<h1>
+							<label for="tabbed7">Roaming</label>
+						</h1>
+						<div>
+							<table id="roamingOfferTable" class="display" width="100%">
+								<thead>
+									<tr>
+										<th id="Amount">Amount</th>
+										<th id="Validity">Validity</th>
+										<th id="Detail">Detail</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</section>
 
-			<div class="tabbed" id="prepaidmobileplansdiv">
-				<h2 id = "offerPlanelHeader">Operator -> Circle plans</h2>
-				<input name="tabbed" id="tabbed1" type="radio"   checked="checked">
-				<section>
-					<h1>
-						<label for="tabbed1">Top Up</label>
-					</h1>
-					<div>
-						<table id="offerTable" class="display" width="100%">
-							<thead>
-								<tr>
-									<th id="Amount">Amount</th>
-									<th id="Validity">Validity</th>
-									<th id="Detail">Detail</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</section>
-				<input name="tabbed" id="tabbed2" type="radio">
-				<section>
-					<h1>
-						<label for="tabbed2">Full Talktime</label>
-					</h1>
-					<div>
-						<table id="ftOfferTable" class="display" width="100%">
-							<thead>
-								<tr>
-									<th id="Amount">Amount</th>
-									<th id="Validity">Validity</th>
-									<th id="Detail">Detail</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</section>
-				<input name="tabbed" id="tabbed3" type="radio">
-				<section>
-					<h1>
-						<label for="tabbed3">2G</label>
-					</h1>
-					<div>
-						<table id="2gOfferTable" class="display" width="100%">
-							<thead>
-								<tr>
-									<th id="Amount">Amount</th>
-									<th id="Validity">Validity</th>
-									<th id="Detail">Detail</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</section>
-				<input name="tabbed" id="tabbed4" type="radio">
-				<section>
-					<h1>
-						<label for="tabbed4">3G/4G</label>
-					</h1>
-					<div>
-						<table id="3gOfferTable" class="display" width="100%">
-							<thead>
-								<tr>
-									<th id="Amount">Amount</th>
-									<th id="Validity">Validity</th>
-									<th id="Detail">Detail</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</section>
-				<input name="tabbed" id="tabbed5" type="radio">
-				<section>
-					<h1>
-						<label for="tabbed5">SMS</label>
-					</h1>
-					<div>
-						<table id="smsOfferTable" class="display" width="100%">
-							<thead>
-								<tr>
-									<th id="Amount">Amount</th>
-									<th id="Validity">Validity</th>
-									<th id="Detail">Detail</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</section>
-				<input name="tabbed" id="tabbed6" type="radio">
-				<section>
-					<h1>
-						<label for="tabbed6">Local/STD/ISD</label>
-					</h1>
-					<div>
-						<table id="localStdIsdOfferTable" class="display" width="100%">
-							<thead>
-								<tr>
-									<th id="Amount">Amount</th>
-									<th id="Validity">Validity</th>
-									<th id="Detail">Detail</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</section>
-				<input name="tabbed" id="tabbed7" type="radio">
-				<section>
-					<h1>
-						<label for="tabbed7">Roaming</label>
-					</h1>
-					<div>
-						<table id="roamingOfferTable" class="display" width="100%">
-							<thead>
-								<tr>
-									<th id="Amount">Amount</th>
-									<th id="Validity">Validity</th>
-									<th id="Detail">Detail</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
-				</section>
-
-			</div>
-	</section>
-
-			<div id="rightadsDiv">
-
-			</div>
-
-		</div>
-		<!-- #main -->
-
-		<footer>
-			<div class="container">
-				<div class="clearfix">
-					<aside>
-						<ul>
-							<li><a href="">Mobile</a></li>
-							<li><a href="">SomeLink1</a></li>
-							<li><a href="">SomeLink2</a></li>
-						</ul>
-					</aside>
-
-					<aside>
-						<ul>
-							<li><a href="">SomeLink1</a></li>
-							<li><a href="">About</a></li>
-							<li><a href="">Contact</a></li>
-						</ul>
-					</aside>
-					<aside class="logo">
-						<a href=""></a>
-					</aside>
 				</div>
-				<div class="copyright">
+			</section>
+			</div>
+		</div>
+
+			<div id="rightadsDiv"></div>
+
+			</div>
+
+		<!-- #main-->
+		    <footer>
+		    <div id = "footerDivId">
+				<div id = "containerId" class="container">
+					<div class="clearfix">
+						<aside>
+							<ul>
+								<li><a href="">Mobile</a></li>
+								<li><a href="">SomeLink1</a></li>
+								<li><a href="">SomeLink2</a></li>
+							</ul>
+						</aside>
+
+						<aside>
+							<ul>
+								<li><a href="">SomeLink1</a></li>
+								<li><a href="">About</a></li>
+								<li><a href="">Contact</a></li>
+							</ul>
+						</aside>
+					</div>
+				<div id = "copyrightId" class="copyright">
 					<span>&copy; 2016, Yunni Network<br> <a href="">xxxyyyzzz.com</a></span>
 				</div>
 			</div>
+		  </div>
 		</footer>
 		<!-- /footer -->
-
-	</div>
-	<!-- /#wrapper -->
-
 	<script type="text/javascript">
-	
-	$(function() {
-		var availableServiceProviders = ["AIRTEL",
-		    		                     "AIRCEL",
-		    		                     "BSNL",
-		    		                     "VODAFONE",
-		    		                     "TATA DOCOMO GSM",
-		    		                     "TATA DOCOMO CDMA",
-		    		                     "MTS",
-		    		                     "UNINOR",
-		    		                     "LOOP",
-		    		                     "VIDEOCON",
-		    		                     "MTNL MUMBAI",
-		    		                     "MTNL DELHI",
-		    		                     "IDEA"];
-		
-		var availableCicles = ["Andhra Pradesh", 
-		                       "Assam", 
-		                       "Bihar & Jharkhand",
-								"Chennai",
-								"Delhi/NCR",
-								"Gujarat",
-								"Haryana",
-								"Himachal Pradesh",
-								"Jammu & Kashmir",
-								"Karnataka",
-								"Kerala",
-								"Kolkata",
-								"Mumbai",
-								"North East",
-								"Orissa",
-								"Punjab",
-								"Rajasthan",
-								"Tamil Nadu",
-								"Uttar Pradesh (E)",
-								"Uttar Pradesh (W)",
-								"West Bengal",
-								"Maharashtra",
-								"Madhya Pradesh"];
-		
-		$('#serviceProvider').autocomplete({
-			  minLength: 0,
-		      source: availableServiceProviders
-		    });
-		$('#serviceCircle').autocomplete({
-			  minLength: 0,
-		      source: availableCicles
-		    });
+		$(function() {
+			var availableServiceProviders = [ "AIRTEL", "AIRCEL", "BSNL",
+					"VODAFONE", "TATA DOCOMO GSM", "TATA DOCOMO CDMA", "MTS",
+					"UNINOR", "LOOP", "VIDEOCON", "MTNL MUMBAI", "MTNL DELHI",
+					"IDEA" ];
+
+			var availableCicles = [ "Andhra Pradesh", "Assam",
+					"Bihar & Jharkhand", "Chennai", "Delhi/NCR", "Gujarat",
+					"Haryana", "Himachal Pradesh", "Jammu & Kashmir",
+					"Karnataka", "Kerala", "Kolkata", "Mumbai", "North East",
+					"Orissa", "Punjab", "Rajasthan", "Tamil Nadu",
+					"Uttar Pradesh (E)", "Uttar Pradesh (W)", "West Bengal",
+					"Maharashtra", "Madhya Pradesh" ];
+
+			$('#serviceProvider').autocomplete({
+				minLength : 0,
+				source : availableServiceProviders
+			});
+			$('#serviceCircle').autocomplete({
+				minLength : 0,
+				source : availableCicles
+			});
 		});
-	
-		
-	
+
 		var currentMobileNumber;
 		var currentServiceProvider;
 		var currentCircleName;
 		var currentAmount;
 		var isFirstTimeInValid = true;
 		var isMobile = false;
-	
+
 		$(document)
 				.ready(
 						function() {
 							$("#prepaidmobileplansdiv").tabs();
-							
-							
+
 							document.getElementById("inputPanelHeader").innerHTML = "Mobile Prepaid";
 
 							// device detection
@@ -358,7 +300,7 @@
 													4))) {
 								isMobile = true;
 							}
-							
+
 							//alert(isMobile);
 							applyAmountSelectionEventForTable('#offerTable');
 							applyAmountSelectionEventForTable('#ftOfferTable');
@@ -375,24 +317,33 @@
 							applyAmountSelectEventsForAmount('#smsOfferTable');
 							applyAmountSelectEventsForAmount('#localStdIsdOfferTable');
 							//applyAmountSelectEventsForAmount('#roamingOfferTable');
-$('#serviceProvider').click(function() {
-	$("#serviceProvider").autocomplete( "search", "" );
-		});
-		$('#serviceCircle').click(function() {
-			$("#serviceCircle").autocomplete( "search", "" );
-			});
+							$('#serviceProvider').click(
+									function() {
+										$("#serviceProvider").autocomplete(
+												"search", "");
+									});
+							$('#serviceCircle').click(function() {
+								$("#serviceCircle").autocomplete("search", "");
+							});
 							$('#rechargeButton')
 									.click(
 											function() {
-												$.ajax({
-															url : 'ajaxservice/recharge?mobileNumber='+$("#mobilenumber").val()
-																	+ '&amount='+$("#amount").val(),
-																	type : 'get',
-																	dataType : 'json',
-																	success : function(
-																			data1) {
-																			alert(data1);
-																	},
+												$
+														.ajax({
+															url : 'ajaxservice/recharge?mobileNumber='
+																	+ $(
+																			"#mobilenumber")
+																			.val()
+																	+ '&amount='
+																	+ $(
+																			"#amount")
+																			.val(),
+															type : 'get',
+															dataType : 'json',
+															success : function(
+																	data1) {
+																alert(data1);
+															},
 															error : function(e) {
 																alert("Under Construction");
 															}
@@ -400,15 +351,15 @@ $('#serviceProvider').click(function() {
 											});
 						});
 
-	   function applyAmountSelectEventsForAmount(tableId) {
-	      $(tableId).click(
-						function() {
-								$("#amount").val(
+		function applyAmountSelectEventsForAmount(tableId) {
+			$(tableId).click(
+					function() {
+						$("#amount").val(
 								$(tableId).DataTable().cell('.selected', 0)
 										.data());
-								currentAmount = $(tableId).DataTable().cell('.selected', 0)
-								.data();
-						});
+						currentAmount = $(tableId).DataTable().cell(
+								'.selected', 0).data();
+					});
 		}
 
 		function applyAmountSelectionEventForTable(tableId) {
@@ -421,8 +372,8 @@ $('#serviceProvider').click(function() {
 				}
 			});
 		}
-		
-		function clearAllTableSelection(){
+
+		function clearAllTableSelection() {
 			$("#offerTable tbody tr").removeClass('selected');
 			$("#ftOfferTable tbody tr").removeClass('selected');
 			$("#2gOfferTable tbody tr").removeClass('selected');
@@ -432,109 +383,115 @@ $('#serviceProvider').click(function() {
 			$("#roamingOfferTable tbody tr").removeClass('selected');
 		}
 
+		$("#amount").keyup(function() {
+			currentAmount = $("#amount").val();
+			navigateTableSelectionOnAmountEntry('#offerTable');
+			/*navigateTableSelectionOnAmountEntry('#ftOfferTable');
+			navigateTableSelectionOnAmountEntry('#2gOfferTable');
+			navigateTableSelectionOnAmountEntry('#3gOfferTable');
+			navigateTableSelectionOnAmountEntry('#smsOfferTable');
+			navigateTableSelectionOnAmountEntry('#localStdIsdOfferTable');
+			navigateTableSelectionOnAmountEntry('#roamingOfferTable');*/
+		});
 
-		$("#amount").keyup(
-				function() {
-					currentAmount = $("#amount").val();
-					navigateTableSelectionOnAmountEntry('#offerTable');
-					/*navigateTableSelectionOnAmountEntry('#ftOfferTable');
-					navigateTableSelectionOnAmountEntry('#2gOfferTable');
-					navigateTableSelectionOnAmountEntry('#3gOfferTable');
-					navigateTableSelectionOnAmountEntry('#smsOfferTable');
-					navigateTableSelectionOnAmountEntry('#localStdIsdOfferTable');
-					navigateTableSelectionOnAmountEntry('#roamingOfferTable');*/
-				});
-		
-		function navigateTableSelectionOnAmountEntry(tableId){
+		function navigateTableSelectionOnAmountEntry(tableId) {
 			var amount = $("#amount").val();
-			$(tableId+" tbody tr").removeClass('selected');
+			$(tableId + " tbody tr").removeClass('selected');
 			//clearAllTableSelection();
 			//$("#prepaidmobileplansdiv").tabs("option", "active", 1);
 			$(tableId).DataTable().rows().every(
 					function(rowIdx, tableLoop, rowLoop) {
 						var data = this.data();
 						if (data.Amount == amount) {
-							var $row = $(tableId+" tr").eq(
-									rowIdx + 1);
+							var $row = $(tableId + " tr").eq(rowIdx + 1);
 							$row.trigger('click');
 							$(".dataTables_scrollBody").scrollTop(
 									42 * rowIdx + 1);
 						}
 					});
 		}
-		
 
-		$("#mobilenumber").keyup(
-				function() {
-					if (validatePhone('mobilenumber')
-							&& $("#mobilenumber").val().length == 10) {
-						isFirstTimeInValid = true;
-						$('#mobilenumber').css('color', 'black');
-						if (currentMobileNumber == $("#mobilenumber").val()) {
-							$("#serviceProvider").val(currentServiceProvider);
-							$("#serviceCircle").val(currentCircleName);
-							$("#amount").val(currentAmount);
-							//$('#offerTable').fadeIn("slow");
-							document.getElementById("offerPlanelHeader").innerHTML = currentServiceProvider+" -> "+currentCircleName;
-						} else if (currentMobileNumber != $("#mobilenumber").val()) {
-							$("#serviceProvider").val("Loading...");
-							$("#serviceCircle").val("Loading...");
-							callAjaxService();
-							currentMobileNumber = $("#mobilenumber").val();
-							//$('#offerTable').fadeIn("slow");
-						}
-					} else {
-						if (isFirstTimeInValid == true) {
-							$('#mobilenumber').css('color', 'red');
-							$("#serviceProvider").val("");
-							$("#serviceCircle").val("");
-							$("#amount").val("");
-							//$('#offerTable').fadeOut("slow");
-							isFirstTimeInValid = false;
-						}
-					}
-				});
+		$("#mobilenumber")
+				.keyup(
+						function() {
+							if (validatePhone('mobilenumber')
+									&& $("#mobilenumber").val().length == 10) {
+								isFirstTimeInValid = true;
+								$('#mobilenumber').css('color', 'black');
+								if (currentMobileNumber == $("#mobilenumber")
+										.val()) {
+									$("#serviceProvider").val(
+											currentServiceProvider);
+									$("#serviceCircle").val(currentCircleName);
+									$("#amount").val(currentAmount);
+									//$('#offerTable').fadeIn("slow");
+									document
+											.getElementById("offerPlanelHeader").innerHTML = currentServiceProvider
+											+ " -> " + currentCircleName;
+								} else if (currentMobileNumber != $(
+										"#mobilenumber").val()) {
+									$("#serviceProvider").val("Loading...");
+									$("#serviceCircle").val("Loading...");
+									callAjaxService();
+									currentMobileNumber = $("#mobilenumber")
+											.val();
+									//$('#offerTable').fadeIn("slow");
+								}
+							} else {
+								if (isFirstTimeInValid == true) {
+									$('#mobilenumber').css('color', 'red');
+									$("#serviceProvider").val("");
+									$("#serviceCircle").val("");
+									$("#amount").val("");
+									//$('#offerTable').fadeOut("slow");
+									isFirstTimeInValid = false;
+								}
+							}
+						});
 
 		function callAjaxService() {
 			$.ajax({
-				url : 'ajaxservice/geMobileInfo?mobileNumber='
+						url : 'ajaxservice/geMobileInfo?mobileNumber='
 						+ $("#mobilenumber").val(),
-				type : 'get',
-				dataType : 'json',
-				success : function(data1) {
-					$("#serviceProvider").val(data1.operator_name);
-					$("#serviceCircle").val(data1.circle_name);
-					document.getElementById("offerPlanelHeader").innerHTML = data1.operator_name+" -> "+data1.circle_name;
-					currentServiceProvider = $("#serviceProvider").val();
-					currentCircleName = $("#serviceCircle").val();
+						type : 'get',
+						dataType : 'json',
+						success : function(data1) {
+							$("#serviceProvider").val(data1.operator_name);
+							$("#serviceCircle").val(data1.circle_name);
+							document.getElementById("offerPlanelHeader").innerHTML = data1.operator_name
+									+ " -> " + data1.circle_name;
+							currentServiceProvider = $("#serviceProvider")
+									.val();
+							currentCircleName = $("#serviceCircle").val();
 
-					var serviceProvider = $("#serviceProvider").val();
-					var circleName = $("#serviceCircle").val();
+							var serviceProvider = $("#serviceProvider").val();
+							var circleName = $("#serviceCircle").val();
 
-					loadDataTable(circleName, serviceProvider, "TUP",
-							"#offerTable");
-					loadDataTable(circleName, serviceProvider, "FTT",
-							"#ftOfferTable");
-					loadDataTable(circleName, serviceProvider, "2G",
-							"#2gOfferTable");
-					loadDataTable(circleName, serviceProvider, "3G",
-							"#3gOfferTable");
-					loadDataTable(circleName, serviceProvider, "SMS",
-							"#smsOfferTable");
-					loadDataTable(circleName, serviceProvider, "LSC",
-							"#localStdIsdOfferTable");
-					loadDataTable(circleName, serviceProvider, "RMG",
-							"#roamingOfferTable");
-				},
-				error : function(e) {
-					alert("Error11");
-				}
-			});
+							loadDataTable(circleName, serviceProvider, "TUP",
+									"#offerTable");
+							loadDataTable(circleName, serviceProvider, "FTT",
+									"#ftOfferTable");
+							loadDataTable(circleName, serviceProvider, "2G",
+									"#2gOfferTable");
+							loadDataTable(circleName, serviceProvider, "3G",
+									"#3gOfferTable");
+							loadDataTable(circleName, serviceProvider, "SMS",
+									"#smsOfferTable");
+							loadDataTable(circleName, serviceProvider, "LSC",
+									"#localStdIsdOfferTable");
+							loadDataTable(circleName, serviceProvider, "RMG",
+									"#roamingOfferTable");
+						},
+						error : function(e) {
+							alert("Error11");
+						}
+					});
 		}
 
 		function loadDataTable(circleName, serviceProvider, offerType, tableId) {
 			$(tableId).dataTable().fnDestroy();
-			$(tableId).dataTable(
+			$(tableId)
+					.dataTable(
 							{
 								"sAjaxSource" : "ajaxservice/getOfferInfo?operatorName="
 										+ serviceProvider
@@ -573,9 +530,6 @@ $('#serviceProvider').click(function() {
 									targets : 2
 								} ]
 							});
-			//$(tableId).dataTable().fnAdjustColumnSizing( false );
-			
-			//$table.closest(".dataTables_wrapper").find("*").css("box-sizing","content-box").css("-moz-box-sizing","content-box");
 		}
 
 		function validatePhone(txtPhone) {
