@@ -44,7 +44,7 @@
 			</div>
 			<div class="site-title">
 				<div class="container">
-					<h1>Welcome Guest!!!</h1>
+					<h1 hidden="true">Welcome Guest!!!</h1>
 				</div>
 			</div>
 			<!-- /.site-title -->
@@ -55,11 +55,12 @@
 		<div id="mainDiv">
 			<div id="leftadsDiv"></div>
 			<div id = "workAreaMainDiv">
-			<div id="topbuttonsDiv" class="maintabs">
+			<!-- <div id="topbuttonsDiv" class="maintabs">
 				<input id="mobileTab" type="radio" name="tabs" checked> <label
-					id="mobileLabel" for="mobileTab">Mobile</label> <input id="dthTab"
+					id="mobileLabel" for="mobileTab">Mobile</label>
+				 <input id="dthTab"
 					type="radio" name="tabs"> <label id="dthLabel" for="dthTab">DTH</label>
-			</div>
+			</div>-->
 
 			<div id = "workAreaDiv">
 				<section id="mobileSection">
@@ -229,7 +230,7 @@
 		    <footer>
 		    <div id = "footerDivId">
 				<div id = "containerId" class="container">
-					<div class="clearfix">
+			<!-- 		<div class="clearfix">
 						<aside>
 							<ul>
 								<li><a href="">Mobile</a></li>
@@ -245,7 +246,7 @@
 								<li><a href="">Contact</a></li>
 							</ul>
 						</aside>
-					</div>
+					</div>-->
 				<div id = "copyrightId" class="copyright">
 					<span>&copy; 2016, Yunni Network<br> <a href="">xxxyyyzzz.com</a></span>
 				</div>

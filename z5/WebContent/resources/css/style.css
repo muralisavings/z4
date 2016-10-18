@@ -31,7 +31,6 @@
 	display: inline-block;
 }
 
-
 #workAreaMainDiv {
 	float:left;
 	width: 65%;
@@ -39,12 +38,10 @@
 	background-color: transparent;
 }
 
-
 #topbuttonsDiv{
 	height:10%;
 	width: 100%;	
 }
-
 
 #workAreaDiv {
 	float:left;
@@ -53,14 +50,13 @@
 	background-color: transparent;
 }
 
-
 #inputPanelHeader {
  padding-top: 3%;
  padding-left: 2%;	
 }
 
-
 #prepaidmobileinputdiv {
+  z-index: 2;
   float:left;
   padding-left: 4%;
   width: 30%;
@@ -69,11 +65,12 @@
  }
  
 #prepaidmobileplansdiv {
+  z-index: 1;
   float:left;
   height:100%;
   width: 70%;
-  display:block;
-  overflow: auto;
+ /* display:block;
+  overflow: auto;*/
   background-color: transparent;
   border: none;
 }
@@ -357,4 +354,8 @@ ol.input-list li {
 
 #mobilenumber, #serviceProvider, #serviceCircle, #amount{
 	background-color: transparent;
+}
+
+#mobileTab {
+ background-color: transparent;
 }
